@@ -20,12 +20,13 @@
   --accent-strong: #1d2a6f;
   --accent-soft: #e6ecfa;
   --mark: #d3dfff;
-  --band: #111825;
-  --band-raised: #1c2433;
-  --band-ink: #f4f7fb;
-  --band-ink-2: #b7beca;
-  --band-accent: #b1c3f3;
-  --band-rule: #2e3748;
+  --band: #eaf0fb;
+  --band-raised: #dfe7f7;
+  --band-ink: #111825;
+  --band-ink-2: #4c535f;
+  --band-accent: #293986;
+  --band-rule: #cdd7ea;
+  --bezel: #cfd6e0;
   --positive: #1f6b4a;
   --positive-soft: #ddf2e7;
   --caution: #875814;
@@ -45,86 +46,11 @@
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --page: 1240px;
+  color-scheme: light;
   --gutter: clamp(16px, 4vw, 48px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0e131b;
-    --surface: #151b25;
-    --sunken: #1b2230;
-    --ink: #eef2f8;
-    --ink-2: #bcc3ce;
-    --ink-3: #9aa2ae;
-    --rule: #283141;
-    --rule-strong: #5b6576;
-    --accent: #b1c3f3;
-    --accent-strong: #cdd9fa;
-    --accent-soft: #1b2645;
-    --mark: #2a3a6b;
-    --band: #1b2230;
-    --band-raised: #232c3d;
-    --band-ink: #eef2f8;
-    --band-ink-2: #b7beca;
-    --band-accent: #b1c3f3;
-    --band-rule: #343e51;
-    --positive: #8fd9b4;
-    --positive-soft: #173a2c;
-    --caution: #f0c67f;
-    --caution-soft: #3a2c14;
-    --info: #9ccaf2;
-    --info-soft: #16304a;
-    --muted: #bcc3ce;
-    --muted-soft: #232b38;
-    --tile-yellow: #3b3418;
-    --tile-pink: #3d2130;
-    --tile-mint: #16362c;
-    --tile-sky: #16304a;
-    --tile-lilac: #2c2446;
-    --canvas: #0b0f15;
-    --canvas-dot: #232b38;
-    --shadow-frame: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
-    color-scheme: dark;
-  }
-}
 
-:root[data-theme="dark"] {
-  --paper: #0e131b;
-  --surface: #151b25;
-  --sunken: #1b2230;
-  --ink: #eef2f8;
-  --ink-2: #bcc3ce;
-  --ink-3: #9aa2ae;
-  --rule: #283141;
-  --rule-strong: #5b6576;
-  --accent: #b1c3f3;
-  --accent-strong: #cdd9fa;
-  --accent-soft: #1b2645;
-  --mark: #2a3a6b;
-  --band: #1b2230;
-  --band-raised: #232c3d;
-  --band-ink: #eef2f8;
-  --band-ink-2: #b7beca;
-  --band-accent: #b1c3f3;
-  --band-rule: #343e51;
-  --positive: #8fd9b4;
-  --positive-soft: #173a2c;
-  --caution: #f0c67f;
-  --caution-soft: #3a2c14;
-  --info: #9ccaf2;
-  --info-soft: #16304a;
-  --muted: #bcc3ce;
-  --muted-soft: #232b38;
-  --tile-yellow: #3b3418;
-  --tile-pink: #3d2130;
-  --tile-mint: #16362c;
-  --tile-sky: #16304a;
-  --tile-lilac: #2c2446;
-  --canvas: #0b0f15;
-  --canvas-dot: #232b38;
-  --shadow-frame: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
-  color-scheme: dark;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -242,7 +168,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
 .table-dark { border-top: 0; border-radius: 6px; overflow: hidden; }
 .table-dark thead th { background: var(--band); color: var(--band-ink); padding: 14px 16px; border: 0; }
 .table-dark td { padding: 14px 16px; }
-.table-dark td.group { background: var(--accent-soft); color: var(--accent); font-weight: 750; vertical-align: middle; text-align: center; border-right: 1px solid var(--rule); }
+.table-dark td.group { background: var(--accent-soft); color: var(--accent); font-weight: 750; vertical-align: middle; text-align: center; border-right: 1px solid var(--rule); white-space: nowrap; }
 
 /* 도장 */
 .stamp {
@@ -291,7 +217,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
 .flow .who { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
 
 /* 결정 띠 */
-.decision { background: var(--band); color: var(--band-ink); border-radius: 10px; padding: clamp(28px, 4vw, 48px); display: grid; gap: 28px; margin-block: 24px clamp(48px, 7vw, 88px); }
+.decision { background: var(--band); color: var(--band-ink); border: 1px solid var(--band-rule); border-radius: 10px; padding: clamp(28px, 4vw, 48px); display: grid; gap: 28px; margin-block: 24px clamp(48px, 7vw, 88px); }
 .decision .eyebrow { color: var(--band-accent); }
 .decision h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.2; }
 .decision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 0; border-top: 1px solid var(--band-rule); }
@@ -308,7 +234,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
 .frame img { width: 100%; height: auto; }
 .frame.desktop img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 .frame.tall img { aspect-ratio: auto; max-height: 820px; object-fit: cover; object-position: top; }
-.frame.mobile { position: absolute; right: -6px; bottom: 0; width: 23%; min-width: 120px; border-radius: 18px; border: 5px solid var(--band); }
+.frame.mobile { position: absolute; right: -6px; bottom: 0; width: 23%; min-width: 120px; border-radius: 18px; border: 5px solid var(--bezel); }
 .frame.mobile img { aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
 .screen-info { display: grid; gap: 14px; align-content: start; }
 .screen-info .id { font-family: var(--font-mono); font-size: 13px; color: var(--accent); }
@@ -366,7 +292,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
   transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1), border-color 160ms ease;
 }
 .door:hover { transform: translateY(-4px); box-shadow: var(--shadow-frame); border-color: var(--rule-strong); }
-.door.is-dark { background: var(--band); color: var(--band-ink); border-color: var(--band); }
+.door.is-dark { background: var(--band); color: var(--band-ink); border-color: var(--band-rule); }
 .door.is-dark .eyebrow { color: var(--band-accent); }
 .door .call { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 .door h2 { font-size: clamp(34px, 4.2vw, 56px); font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; }
