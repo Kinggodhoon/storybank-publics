@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="기본 구성 · 스토리뱅크 디자인 시스템">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/design/foundations.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>기본 구성 · 스토리뱅크 디자인 시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .space-row { display: grid; grid-template-columns: minmax(0, 90px) minmax(0, 80px) minmax(0, 1fr); gap: 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+  .space-row i { display: block; height: 14px; background: var(--accent); border-radius: 2px; }
+  .space-row .mono { font-size: 12px; color: var(--ink-3); }
+  .radii { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 14px; }
+  .radii div { height: 110px; border: 1px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; text-align: center; font-size: 13px; color: var(--ink-2); padding: 8px; }
+  .radii b { display: block; font-size: 16px; color: var(--ink); }
+  .rules-demo { display: grid; gap: 18px; }
+  .rules-demo div { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 16px; align-items: center; font-size: 14px; color: var(--ink-2); }
+  .rules-demo hr { margin: 0; border: 0; }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 디자인 시안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DS-02</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Design Foundations</p>
+      <h1>화면의<br>기본 단위</h1>
+    </div>
+    <p class="lead">타이포그래피, 여백, 모서리, 구분선, 모션, 아이콘의 기준입니다. 모든 화면은 이 토큰만 사용하며, 토큰에 없는 값은 코드 검사에서 걸러집니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>글꼴</dt><dd>Pretendard <small>700 · 400</small></dd></div>
+    <div class="fact"><dt>보조 글꼴</dt><dd>IBM Plex Mono <small>500</small></dd></div>
+    <div class="fact"><dt>간격 기준</dt><dd class="num">4px</dd></div>
+    <div class="fact"><dt>컨트롤 높이</dt><dd class="num">44px <small>관리자 34px</small></dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Typography</p><h2 id="s1">타이포그래피</h2><p>Pretendard 하나, 번호만 Mono</p></div>
+    <div class="sec-body">
+      <div>
+        <div class="scale-row"><span class="meta">display-xl · 88</span><span style="font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-0.04em;line-height:1.1">이야기를 장면으로</span></div>
+        <div class="scale-row"><span class="meta">display · 56</span><span style="font-size:clamp(30px,3.6vw,48px);font-weight:700;letter-spacing:-0.03em;line-height:1.2">내 서재</span></div>
+        <div class="scale-row"><span class="meta">title · 31</span><span style="font-size:31px;font-weight:700;letter-spacing:-0.02em">시장 골목 떡집의 마흔 해</span></div>
+        <div class="scale-row"><span class="meta">title-sm · 25</span><span style="font-size:25px;font-weight:700;letter-spacing:-0.02em">회차 고르기</span></div>
+        <div class="scale-row"><span class="meta">lead · 20</span><span style="font-size:20px;line-height:1.6">새벽 세 시에 불을 켜던 떡집이 골목과 함께 늙어 간 사십 년의 이야기예요.</span></div>
+        <div class="scale-row"><span class="meta">reading · 17 / 1.85</span><span style="font-size:17px;line-height:1.85;max-width:38em">떡집의 불은 늘 새벽 세 시에 켜졌다. 골목에서 가장 먼저 김이 오르는 가게였고, 이웃들은 그 김을 보고 하루가 시작된 줄 알았다.</span></div>
+        <div class="scale-row"><span class="meta">body · 16 / 1.65</span><span style="font-size:16px">판매 가능한 회차만 고를 수 있어요. 한 번에 50개까지 담을 수 있어요.</span></div>
+        <div class="scale-row"><span class="meta">caption · 13</span><span style="font-size:13px;color:var(--ink-3)">결제가 확인되면 내 서재에서 전문을 읽을 수 있어요.</span></div>
+        <div class="scale-row"><span class="meta">code · Plex Mono 500</span><span class="mono" style="font-size:15px">SB-260930-0001 · E3 · v2</span></div>
+      </div>
+      <ul class="rows">
+        <li><span class="n">T1</span><strong>한글 줄바꿈</strong><span>단어 단위로 줄을 바꾸고(keep-all), 긴 URL은 어느 위치에서든 줄을 바꿉니다.</span></li>
+        <li><span class="n">T2</span><strong>숫자 맞춤</strong><span>금액과 날짜가 세로로 줄을 맞추도록 테이블의 숫자에는 고정폭 숫자를 씁니다.</span></li>
+        <li><span class="n">T3</span><strong>제목은 곧게</strong><span>제목에 기울임을 쓰지 않고, 본문에는 자간을 넣지 않습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Spacing</p><h2 id="s2">간격</h2><p>4의 배수, 이름 붙은 단계</p></div>
+    <div class="sec-body">
+      <div>
+        <div class="space-row"><b>2xs</b><span class="mono">4px</span><i style="width:4px"></i></div>
+        <div class="space-row"><b>xs</b><span class="mono">8px</span><i style="width:8px"></i></div>
+        <div class="space-row"><b>sm</b><span class="mono">12px</span><i style="width:12px"></i></div>
+        <div class="space-row"><b>md</b><span class="mono">16px</span><i style="width:16px"></i></div>
+        <div class="space-row"><b>lg</b><span class="mono">24px</span><i style="width:24px"></i></div>
+        <div class="space-row"><b>xl</b><span class="mono">32px</span><i style="width:32px"></i></div>
+        <div class="space-row"><b>2xl</b><span class="mono">48px</span><i style="width:48px"></i></div>
+        <div class="space-row"><b>3xl</b><span class="mono">72px</span><i style="width:72px"></i></div>
+        <div class="space-row"><b>4xl</b><span class="mono">96px</span><i style="width:96px"></i></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>기준</th><th>값</th><th>설명</th></tr></thead>
+          <tbody>
+            <tr><td>본문 최대 폭</td><td class="mono">38em</td><td>긴 글 한 줄의 최대 폭</td></tr>
+            <tr><td>화면 폭</td><td class="mono">75rem</td><td>콘텐츠 최대 폭(1200px)</td></tr>
+            <tr><td>좌우 여백</td><td class="mono">2rem · 1rem</td><td>760px 미만에서는 1rem</td></tr>
+            <tr><td>브레이크포인트</td><td class="mono">400 · 760 · 1050 · 1200</td><td>1200px 이상에서 공개 헤더 메뉴가 펼쳐짐</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Shape</p><h2 id="s3">모서리와 구분선</h2></div>
+    <div class="sec-body">
+      <div class="radii">
+        <div style="border-radius:2px"><span><b>2px</b>관리자 화면 전체 · 상태 배지</span></div>
+        <div style="border-radius:12px"><span><b>12px</b>공개 버튼·입력·칩</span></div>
+        <div style="border-radius:20px"><span><b>20px</b>공개 카드·타일</span></div>
+        <div style="border-radius:28px"><span><b>28px</b>상단 배너·다크 패널</span></div>
+        <div style="border-radius:999px"><span><b>999px</b>원형 요소에만</span></div>
+      </div>
+      <div class="rules-demo">
+        <div><span>기본 구분선 · 1px rule</span><hr style="border-top:1px solid var(--rule)"></div>
+        <div><span>강조 구분선 · 1px rule-strong</span><hr style="border-top:1px solid var(--rule-strong)"></div>
+        <div><span>상단 강조선 · 3px double</span><hr style="border-top:3px double var(--ink)"></div>
+        <div><span>섹션 시작선 · 1px ink</span><hr style="border-top:1px solid var(--ink)"></div>
+      </div>
+      <p class="prose">카드는 그림자 대신 구분선으로 나눕니다. 그림자는 모달과 하단 고정 액션 바에만 씁니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Motion</p><h2 id="s4">모션</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>기준</th><th>값</th><th>쓰는 곳</th></tr></thead>
+          <tbody>
+            <tr><td>순간</td><td class="mono">80ms</td><td>누름, 선택 표시</td></tr>
+            <tr><td>짧게</td><td class="mono">160ms</td><td>색 전환, 탭 내용</td></tr>
+            <tr><td>보통</td><td class="mono">240ms</td><td>모달, 메뉴 열기</td></tr>
+            <tr><td>이징</td><td class="mono">cubic-bezier(0.22, 1, 0.36, 1)</td><td>나타나는 움직임</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">움직이는 것은 색·위치·투명도뿐입니다. 버튼은 누를 때 1px 내려가고, 포커스 링은 지연 없이 바로 나타납니다. 운영체제에서 "동작 줄이기"를 켜면 전환 효과를 끕니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s5">
+    <div class="sec-label"><p class="eyebrow">05 / Icons &amp; Licenses</p><h2 id="s5">아이콘과 라이선스</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">ICON</span><strong>Lucide 선 아이콘</strong><span>선 굵기 1.75–2px, 채움 없이 씁니다. 아이콘만 단독으로 두지 않고 항상 텍스트와 함께 씁니다.</span></li>
+        <li><span class="n">PHOTO</span><strong>연출 이미지</strong><span>와이어프레임의 사진은 연출 이미지입니다. 정식 공개 전에 실제 사진이나 일러스트로 교체합니다.</span></li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>자산</th><th>용도</th><th>라이선스</th></tr></thead>
+          <tbody>
+            <tr><td>Pretendard</td><td>제목·본문 글꼴</td><td>SIL OFL 1.1</td></tr>
+            <tr><td>IBM Plex Mono</td><td>코드·번호 글꼴</td><td>SIL OFL 1.1</td></tr>
+            <tr><td>Lucide</td><td>선 아이콘</td><td>ISC</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>기본 구성</span><span class="mono">SB-DS-02 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="스토리뱅크 기획안">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/planning/">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>스토리뱅크 기획안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 기획안</a>
+    <a class="back-link" href="../">← 처음으로</a>
+    <span class="spacer"></span>
+    <a class="back-link" href="../design/">디자인 시안 →</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Planning Index · SB-PLAN</p>
+      <h1>스토리뱅크<br>서비스 기획안</h1>
+    </div>
+    <p class="lead">무엇을 왜 만드는지부터 화면 구조, 기능, 일정, 개발 범위까지 기획 자료를 목적별로 정리했습니다. 각 문서의 내용은 실제 동작하는 알파 서비스(2026.09.30 기준, 로컬 시연 환경)와 일치시켰습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>거래 단위</dt><dd>에피소드</dd></div>
+    <div class="fact"><dt>화면</dt><dd class="num">42개 <small>공개 17 · 관리자 25</small></dd></div>
+    <div class="fact"><dt>기능</dt><dd class="num">45개 <small>F1–F9</small></dd></div>
+    <div class="fact"><dt>납품</dt><dd class="num">10.30 <small>C1–C5</small></dd></div>
+  </dl>
+
+  <section class="ix" aria-labelledby="ix-plan">
+    <div class="ix-head">
+      <p class="eyebrow">01 / Planning</p>
+      <h2 id="ix-plan">기획 자료</h2>
+      <p>4개 문서</p>
+    </div>
+    <ul class="ix-list">
+      <li class="is-featured"><a href="overview.html"><div><span class="call">SB-PLAN-01</span><strong>서비스 기획서</strong><span>배경과 목표, 컨셉, 사용자와 시나리오, 핵심 흐름, 거래·권리 원칙, 범위, 용어</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="ia.html"><div><span class="call">SB-PLAN-02</span><strong>서비스 구조와 메뉴</strong><span>공개·관리자 메뉴 트리와 화면 42개의 번호·주소·상태</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="features.html"><div><span class="call">SB-PLAN-03</span><strong>기능 정의</strong><span>45개 기능의 완료 기준과 구현 상태(구현 17 · 일부 14 · 예정 14)</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="schedule.html"><div><span class="call">SB-PLAN-04</span><strong>일정표</strong><span>9월 설계부터 11월 최종 마감까지 계획과 실제 진행, 발주자 확인 요청</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section class="ix" aria-labelledby="ix-dev">
+    <div class="ix-head">
+      <p class="eyebrow">02 / Development</p>
+      <h2 id="ix-dev">개발 참고 자료</h2>
+      <p>3개 문서</p>
+    </div>
+    <ul class="ix-list">
+      <li><a href="inventory.html"><div><span class="call">SB-DEV-01</span><strong>화면 인벤토리와 개발 범위</strong><span>화면별 구현 상태와 개발 단계, 다음 단계에서 만들 화면</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="architecture.html"><div><span class="call">SB-DEV-02</span><strong>기술 구조와 보안 원칙</strong><span>Next.js · Supabase · Vercel 구성, 권한 경계, 파일과 열람 기록</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="quality.html"><div><span class="call">SB-DEV-03</span><strong>품질 기준과 검사</strong><span>테스트 5계층, 접근성 자동 검사, 교차 검토</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section class="ix" aria-labelledby="ix-design">
+    <div class="ix-head">
+      <p class="eyebrow">03 / Design</p>
+      <h2 id="ix-design">디자인 시안으로</h2>
+      <p>별도 자료</p>
+    </div>
+    <ul class="ix-list">
+      <li><a href="../design/"><div><span class="call">SB-DESIGN</span><strong>디자인 시안 전체 보기</strong><span>디자인 캔버스, 공개·관리자 화면 시안, 디자인 시스템</span></div><span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>스토리뱅크 기획안</span><span class="mono">SB-PLAN · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

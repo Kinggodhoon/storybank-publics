@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="화면 인벤토리 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/planning/inventory.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>화면 인벤토리 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 기획안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DEV-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Screen Inventory</p>
+      <h1>화면과<br>개발 범위</h1>
+    </div>
+    <p class="lead">화면 42개의 구현 상태와 개발 단계를 한 표로 모았습니다. 구현한 화면은 알파 서비스에서 동작하고, 와이어프레임 시안은 해당 단계에서 같은 디자인 시스템으로 구현합니다. 와이어프레임에는 이전 메뉴 표기와 연출 이미지가 남아 있습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>구현 화면</dt><dd class="num"><span data-count="*:built"></span>개</dd></div>
+    <div class="fact"><dt>다른 화면에 포함·일부</dt><dd class="num"><span data-count="*:merged,partial"></span>개</dd></div>
+    <div class="fact"><dt>와이어프레임 시안</dt><dd class="num"><span data-count="*:wire"></span>개 <small>B4–B6</small></dd></div>
+    <div class="fact"><dt>문서로 대체</dt><dd class="num"><span data-count="*:doc"></span>개</dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Rules</p><h2 id="s1">분류 기준</h2></div>
+    <div class="sec-body">
+      <div class="grid">
+        <div class="card"><span class="stamp is-built" style="justify-self:start">구현 화면</span><p>알파 서비스에서 실제로 동작하는 화면입니다(데이터는 모두 합성 데이터). 시안 이미지는 그 화면을 캡처한 것입니다.</p></div>
+        <div class="card"><span class="stamp is-merged" style="justify-self:start">다른 화면에 포함</span><p>별도 화면 대신 관련 화면의 한 섹션으로 구현했습니다(예: 권리 검수 → 원고 상세).</p></div>
+        <div class="card"><span class="stamp is-partial" style="justify-self:start">일부 구현</span><p>핵심 기능은 구현했고, 나머지는 다음 단계에서 추가합니다.</p></div>
+        <div class="card"><span class="stamp is-wire" style="justify-self:start">와이어프레임 시안</span><p>AI 처리·권리 심화·운영 단계에서 구현하거나, 범위 밖 후보로 남긴 화면입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Inventory</p><h2 id="s2">전체 화면</h2><p>화면 이름을 누르면 시안으로 이동합니다</p></div>
+    <div class="sec-body"><div class="table-wrap" data-inventory=""></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Next</p><h2 id="s3">다음 단계에서 만들 화면</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>단계</th><th>화면</th><th>함께 만드는 기능</th></tr></thead>
+          <tbody>
+            <tr><td>B4 AI 처리</td><td>AI 처리 작업(A-10), 작업 상세(A-11), 키워드·메타데이터(A-19), 벡터 색인(A-20), 원문 대조 분할·병합(A-14)</td><td>작업 대기열, AI 분할·요약, 태그·키워드, 의미 검색</td></tr>
+            <tr><td>결정 대기</td><td>AI 검색(P-03)</td><td>AI 검색 화면 유지 여부(U7)</td></tr>
+            <tr><td>B5 권리 심화</td><td>권리자·증빙(A-18)</td><td>간이 계약 PDF, 3단계 승인 게이트</td></tr>
+            <tr><td>B6 운영·증빙</td><td>내보내기·감사 로그(A-25)</td><td>내보내기, KPI 측정, 감사 로그 조회</td></tr>
+            <tr><td>범위 밖 후보</td><td>컬렉션(P-16), 프로젝트·도서(A-05·A-06), 라이선스 단위(A-16), 버전 비교(A-17)</td><td>일정 미정</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>화면 인벤토리와 개발 범위</span><span class="mono">SB-DEV-01 · 2026.09.30</span></div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/render.js"></script>
+</body>
+</html>

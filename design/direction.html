@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="디자인 방향 제안 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/design/direction.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>디자인 방향 제안 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .mood { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 120px; gap: 14px; }
+  .mood > * { border-radius: 12px; overflow: hidden; min-width: 0; }
+  .mood img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .m-shot-a { grid-column: span 3; grid-row: span 4; border: 1px solid var(--rule); }
+  .m-card { grid-column: span 3; grid-row: span 2; background: var(--surface); border: 1px solid var(--rule); padding: 20px 22px; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; position: relative; }
+  .m-card::before { content: ""; position: absolute; left: 50%; bottom: 14px; width: 12px; height: 12px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule-strong); transform: translateX(-50%); }
+  .m-card .mono { font-size: 12px; color: var(--accent); grid-column: 1 / -1; letter-spacing: 0.04em; }
+  .m-card strong { grid-column: 1 / -1; font-size: 24px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.25; }
+  .m-card dl { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin: 6px 0 0; font-size: 13px; }
+  .m-card dt { color: var(--ink-3); }
+  .m-card dd { margin: 0; color: var(--ink-2); }
+  .m-stamps { grid-column: span 2; grid-row: span 1; background: var(--paper); border: 1px dashed var(--rule-strong); display: flex; flex-wrap: wrap; gap: 8px; align-content: center; justify-content: center; padding: 10px; }
+  .m-stamps .stamp { transform: rotate(-4deg); }
+  .m-stamps .stamp:nth-child(2) { transform: rotate(3deg); }
+  .m-type { grid-column: span 1; grid-row: span 1; background: var(--band); color: var(--band-ink); display: grid; place-items: center; font-size: 44px; font-weight: 800; letter-spacing: -0.05em; }
+  .m-palette { grid-column: span 3; grid-row: span 1; display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--rule); }
+  .m-palette i { display: block; }
+  .m-tile { grid-row: span 1; padding: 14px 16px; display: grid; align-content: space-between; font-weight: 750; font-size: 16px; color: #111825; }
+  .m-tile small { font-weight: 500; font-size: 12px; opacity: 0.75; }
+  .m-shot-b { grid-column: span 2; grid-row: span 3; border: 1px solid var(--rule); }
+  .m-phone { grid-column: span 1; grid-row: span 3; border: 5px solid var(--band); border-radius: 22px; }
+  .m-quote { grid-column: span 3; grid-row: span 2; background: var(--accent); color: #f4f7fb; padding: 22px 24px; display: grid; align-content: space-between; }
+  .m-quote p { font-size: 22px; font-weight: 600; line-height: 1.5; letter-spacing: -0.02em; }
+  .m-quote span { font-family: var(--font-mono); font-size: 12px; opacity: 0.8; }
+  @media (max-width: 900px) {
+    .mood { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 110px; }
+    .mood > * { grid-column: span 2 !important; }
+    .m-type, .m-tile, .m-phone { grid-column: span 1 !important; }
+    .m-shot-a { grid-row: span 3; }
+  }
+  .tone { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; }
+  .tone figure { margin: 0; display: grid; gap: 12px; }
+  .tone figcaption { display: grid; gap: 4px; }
+  .tone figcaption strong { font-size: 20px; font-weight: 800; letter-spacing: -0.025em; }
+  .tone figcaption span { font-size: 14px; color: var(--ink-2); }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 디자인 시안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DESIGN-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Design Direction Brief</p>
+      <h1>스토리뱅크<br>디자인 방향 제안</h1>
+    </div>
+    <p class="lead">컨셉은 <strong>"서고"</strong>입니다. 도서관 목록 카드, 청색 도장 잉크, 얇은 구분선에서 출발했습니다. 기록과 권리를 다루는 서비스인 만큼 신뢰감을 우선했고, 공개 화면에는 가볍고 밝은 분위기를 더했습니다. 흔한 템플릿처럼 보이지 않는 화면을 목표로 했습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>스타일</dt><dd>에디토리얼</dd></div>
+    <div class="fact"><dt>포인트 컬러</dt><dd>잉크 블루</dd></div>
+    <div class="fact"><dt>글꼴</dt><dd>Pretendard <small>+ Plex Mono</small></dd></div>
+    <div class="fact"><dt>톤</dt><dd>업무형(관리자) · 가벼운 변형(공개)</dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Moodboard</p><h2 id="s1">무드보드</h2><p>종이, 목록 카드, 도장, 장면</p></div>
+    <div class="sec-body">
+      <div class="mood" aria-label="무드보드">
+        <div class="m-shot-a"><img src="../shots/P01-home-desktop-full.jpg" alt="첫 화면 시안"></div>
+        <div class="m-card" aria-label="도서관 목록 카드를 닮은 에피소드 카드">
+          <span class="mono">EP-000101 · 실화 · E1</span>
+          <strong>새벽 세 시의 불빛</strong>
+          <dl><dt>원고</dt><dd>시장 골목 떡집의 마흔 해</dd><dt>판매</dt><dd>판매 중 · 25,000원</dd><dt>이용</dt><dd>전문 열람과 비상업 참고</dd></dl>
+        </div>
+        <div class="m-stamps" aria-label="상태 배지"><span class="stamp is-built">판매 중</span><span class="stamp is-wire">결제 확인 대기</span><span class="stamp is-partial">조건부 판매</span></div>
+        <div class="m-type" aria-label="타이포그래피 예시">가</div>
+        <div class="m-palette" aria-label="팔레트"><i style="background:#f4f7fb"></i><i style="background:#e9eef3"></i><i style="background:#ccd1d9"></i><i style="background:#4c535f"></i><i style="background:#111825"></i><i style="background:#293986"></i></div>
+        <div class="m-tile" style="background:#f6e8b3">실화<small>있었던 일</small></div>
+        <div class="m-tile" style="background:#ffd8e9">꿈 이야기<small>꿈에서 본 장면</small></div>
+        <div class="m-tile" style="background:#c8f3e3">단편 소설<small>지어낸 이야기</small></div>
+        <div class="m-shot-b"><img src="../shots/A15-manuscript-strips.jpg" alt="관리자 원고 상세 시안" style="object-position:left top"></div>
+        <div class="m-phone"><img src="../shots/P04-episode-guest-mobile.jpg" alt="에피소드 상세 모바일 시안"></div>
+        <div class="m-quote"><p>"떡집의 불은 늘 새벽 세 시에 켜졌다. 골목에서 가장 먼저 김이 오르는 가게였다."</p><span>공개 발췌 · 원문 그대로 인용</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Principles</p><h2 id="s2">디자인 원칙</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">TRUST</span><strong>기록처럼 믿을 수 있게</strong><span>분류 코드, 도장처럼 찍히는 상태 배지, 구분선 중심의 테이블. 화려함보다 정확함이 먼저 보이게 합니다.</span></li>
+        <li><span class="n">LIGHT</span><strong>공개 화면은 가볍게</strong><span>공개 화면은 부드러운 모서리와 에피소드 카드로 둘러보는 재미를 줍니다. 파스텔 타일과 사진은 BI와 사진 사용이 정해지면 적용합니다(검토 항목 DR2).</span></li>
+        <li><span class="n">READ</span><strong>읽는 화면은 읽기 좋게</strong><span>에피소드 상세와 서재는 본문 폭 38em, 줄 간격 1.85의 읽기 전용 레이아웃입니다.</span></li>
+        <li><span class="n">COLOR</span><strong>색은 의미가 있을 때만</strong><span>포인트 컬러는 주요 동작과 선택 상태에만 씁니다. 상태는 색과 텍스트를 함께 써서 색만으로 구분하지 않습니다.</span></li>
+        <li><span class="n">MOTION</span><strong>절제된 모션</strong><span>색·위치·투명도에만 80–240ms 전환을 적용하고, 운영체제의 "동작 줄이기" 설정을 따릅니다. 숫자가 올라가는 효과나 스크롤 연출은 쓰지 않습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Tone</p><h2 id="s3">두 가지 톤</h2><p>같은 토큰, 다른 스타일</p></div>
+    <div class="sec-body">
+      <div class="tone">
+        <figure>
+          <div class="frame desktop"><img src="../shots/P02-search-desktop.jpg" alt="에피소드 탐색 시안"></div>
+          <figcaption><strong>공개 화면 · 가벼운 변형</strong><span>12·20·28px 모서리와 에피소드 카드. 첫 화면부터 탐색·상세·멤버십까지 같은 스타일을 씁니다.</span></figcaption>
+        </figure>
+        <figure>
+          <div class="frame desktop"><img src="../shots/A12-episodes-desktop.jpg" alt="관리자 에피소드 목록 시안"></div>
+          <figcaption><strong>관리자 화면 · 업무형</strong><span>2px 모서리, 34px 행 높이, 왼쪽 사이드 메뉴와 데이터 테이블. 한 행에는 한 가지 정보만 둡니다.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Structure</p><h2 id="s4">레이아웃 유형</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>레이아웃 유형</th><th>쓰는 곳</th><th>특징</th></tr></thead>
+          <tbody>
+            <tr><td>허브형 첫 화면</td><td>첫 화면</td><td>검색창 중심의 상단 영역, 이야기 종류 카드, 새로 공개된 에피소드</td></tr>
+            <tr><td>목록형</td><td>탐색·멤버십·원고 올리기</td><td>한 줄 헤더, 페이지 타이틀, 에피소드 카드와 둥근 폼</td></tr>
+            <tr><td>읽기형</td><td>에피소드 상세·서재</td><td>분류 코드 줄, 큰 제목, 본문 폭 38em</td></tr>
+            <tr><td>업무형 테이블</td><td>관리자 화면 전체</td><td>왼쪽 사이드 메뉴 + 데이터 테이블, 상세는 섹션 패널</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s5">
+    <div class="sec-label"><p class="eyebrow">05 / Benchmark</p><h2 id="s5">참고한 구조</h2></div>
+    <div class="sec-body">
+      <p class="prose">화면 구조는 크라우드펀딩과 창작자 플랫폼(텀블벅·와디즈·킥스타터·인디고고·패트리온)을 참고했습니다. 가져온 것은 "고르고 담는 흐름"과 "창작자 안내"이고, 가져오지 않은 것은 과장된 수치와 자극적인 배너입니다.</p>
+      <div class="grid">
+        <div class="card"><span class="kicker">가져온 것</span><h3>카드와 하단 선택 바</h3><p>여러 회차를 골라 합계를 보며 담는 하단 선택 바, 에피소드 카드의 정보 순서.</p></div>
+        <div class="card"><span class="kicker">가져온 것</span><h3>제공자 안내</h3><p>원고를 올리는 회원을 위한 단계 안내와 책임 고지를 한 흐름으로 묶었습니다.</p></div>
+        <div class="card"><span class="kicker">가져오지 않은 것</span><h3>과장과 자극</h3><p>올라가는 숫자, 반짝이는 배너, 과한 그라데이션 같은 흔한 장식.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="decision" aria-labelledby="decide">
+    <p class="eyebrow">06 / Decision</p>
+    <h2 id="decide">디자인에서 확인이 필요한 항목</h2>
+    <div class="decision-grid">
+      <div><span class="mono">U8 · BI</span><strong>제품명과 BI 컬러</strong><p>후보는 스토리뱅크, 스토리 라이선스 뱅크, K-Story 라이센스 뱅크입니다. 시안의 워드마크는 임시이며, 로고와 BI 컬러가 확정되면 포인트 컬러 계열만 바꿉니다.</p></div>
+      <div><span class="mono">DR1 · C5</span><strong>주요 화면 목록</strong><p>상세 디자인 후보: 첫 화면, 에피소드 탐색, 에피소드 상세, 원고 상세·회차 선택, 장바구니, 내 서재, 운영 대시보드, 원고 목록·상세(관리자).</p></div>
+      <div><span class="mono">DR2 · IMAGE</span><strong>사진과 일러스트</strong><p>파스텔 타일과 기록 사진을 공개 화면에 적용할지, 기록 사진을 쓴다면 원고 제공자 동의가 필요한지 정합니다.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>디자인 방향 제안</span><span class="mono">SB-DESIGN-01 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>페이지를 찾을 수 없어요 · 스토리뱅크</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root { --paper: #f4f7fb; --ink: #111825; --ink-2: #4c535f; --accent: #293986; --rule: #d6dbe2; }
+  @media (prefers-color-scheme: dark) { :root { --paper: #0e131b; --ink: #eef2f8; --ink-2: #bcc3ce; --accent: #b1c3f3; --rule: #283141; color-scheme: dark; } }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--paper); color: var(--ink); font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; padding: 24px; box-sizing: border-box; }
+  main { max-width: 520px; display: grid; gap: 16px; }
+  .code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.08em; }
+  h1 { margin: 0; font-size: 40px; letter-spacing: -0.04em; }
+  p { margin: 0; color: var(--ink-2); line-height: 1.7; }
+  nav { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid var(--rule); }
+  a { color: var(--accent); font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<main>
+  <span class="code">404 · NOT FOUND</span>
+  <h1>페이지를 찾을 수 없어요</h1>
+  <p>주소가 바뀌었거나 삭제된 페이지입니다. 아래에서 다시 찾아 주세요.</p>
+  <nav><a href="/">처음으로</a><a href="/planning/">기획안</a><a href="/design/">디자인 시안</a></nav>
+</main>
+<script>
+  /* 저장소 이름이 붙는 주소(user.github.io/<저장소>/)에서도 링크가 맞도록 첫 경로 조각을 앞에 붙인다 */
+  (function () {
+    var first = location.pathname.split('/')[1];
+    var known = ['planning', 'design', 'assets', 'shots', 'fonts', ''];
+    if (first && known.indexOf(first) === -1 && !/\.html$/.test(first)) {
+      document.querySelectorAll('a[href^="/"]').forEach(function (a) { a.setAttribute('href', '/' + first + a.getAttribute('href')); });
+      document.querySelector('link[rel="icon"]').setAttribute('href', '/' + first + '/assets/favicon.svg');
+    }
+  })();
+</script>
+</body>
+</html>

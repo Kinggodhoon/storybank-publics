@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="기술 구조 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/planning/architecture.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>기술 구조 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .stack { display: grid; gap: 10px; }
+  .layer { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+  .layer > span { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); padding-top: 14px; }
+  .layer .boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 8px; }
+  .box { border: 1px solid var(--rule); background: var(--surface); border-radius: 6px; padding: 12px 14px; display: grid; gap: 2px; }
+  .box strong { font-size: 14.5px; }
+  .box small { font-size: 12.5px; color: var(--ink-3); }
+  .box.accent { border-color: var(--accent); background: var(--accent-soft); }
+  .box.accent strong { color: var(--accent); }
+  .box.dark { background: var(--band); border-color: var(--band); color: var(--band-ink); }
+  .box.dark small { color: var(--band-ink-2); }
+  .connector { text-align: center; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px; }
+  @media (max-width: 640px) { .layer { grid-template-columns: minmax(0, 1fr); } .layer > span { padding-top: 0; } }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 기획안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DEV-02</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Architecture</p>
+      <h1>기술 구조와<br>보안 원칙</h1>
+    </div>
+    <p class="lead">별도 서버 없이 Vercel과 Supabase로 운영합니다. 권한은 데이터베이스에서 한 번 더 확인하므로, 화면 코드에 오류가 있어도 다른 회원의 데이터나 원문에 접근할 수 없도록 설계했습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>화면·API</dt><dd>Next.js 16 · Vercel</dd></div>
+    <div class="fact"><dt>데이터·인증·파일</dt><dd>Supabase <small>서울</small></dd></div>
+    <div class="fact"><dt>보안 경계</dt><dd>PostgreSQL RLS</dd></div>
+    <div class="fact"><dt>운영 비용</dt><dd>Supabase 무료 · Vercel Pro <small>+ AI 사용량</small></dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Stack</p><h2 id="s1">전체 구성</h2></div>
+    <div class="sec-body">
+      <div class="stack" role="img" aria-label="브라우저, Vercel의 Next.js 화면과 API, Supabase의 PostgreSQL·Auth·Storage, 외부 AI API로 이어지는 구성">
+        <div class="layer"><span>BROWSER</span><div class="boxes"><div class="box"><strong>공개 화면</strong><small>한국어(/) · 영어(/en)</small></div><div class="box"><strong>관리자 화면</strong><small>/admin · 한국어</small></div><div class="box"><strong>파일 업로드</strong><small>서명된 링크로 저장소에 직접 업로드</small></div></div></div>
+        <p class="connector">HTTPS ↓</p>
+        <div class="layer"><span>VERCEL</span><div class="boxes"><div class="box accent"><strong>Next.js App Router</strong><small>서버 컴포넌트, 공개 목록 캐시</small></div><div class="box accent"><strong>Route Handler (API)</strong><small>요청 ID · 인증 · 등급 · 검증 · 오류 코드</small></div><div class="box"><strong>본문 추출</strong><small>TXT·DOCX·PDF, 등록 요청 처리 중 추출</small></div></div></div>
+        <p class="connector">로그인 세션 · 공개 조회 · 시스템 작업 ↓</p>
+        <div class="layer"><span>SUPABASE</span><div class="boxes"><div class="box dark"><strong>PostgreSQL</strong><small>RLS · DB 함수 · 감사 로그 · pgvector</small></div><div class="box"><strong>Auth</strong><small>이메일·비밀번호, 등급</small></div><div class="box"><strong>Storage</strong><small>원고 20MB · 동의서 10MB, 비공개</small></div></div></div>
+        <p class="connector">B4 ↓</p>
+        <div class="layer"><span>EXTERNAL</span><div class="boxes"><div class="box"><strong>외부 AI API</strong><small>분할·키워드·임베딩, 동의한 원고만</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Principles</p><h2 id="s2">설계 원칙</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">BOUNDARY</span><strong>DB가 보안 경계</strong><span>모든 테이블에 RLS(행 수준 보안)를 적용하고, 업무 규칙이 걸린 쓰기는 호출자 권한을 먼저 확인하는 DB 함수로만 처리합니다.</span></li>
+        <li><span class="n">WRITES</span><strong>쓰기 경로는 세 가지</strong><span>본인 정보의 단순 쓰기, 규칙이 있는 DB 함수, 시스템 작업. 어떤 경로인지 코드에서 바로 구분됩니다.</span></li>
+        <li><span class="n">HISTORY</span><strong>기록은 수정하지 않음</strong><span>에피소드 버전, 권리 기록, 이용 기록, 감사 로그는 추가만 합니다. 주문에는 주문 시점 조건을 복사합니다.</span></li>
+        <li><span class="n">CATALOG</span><strong>공개 목록 자동 갱신</strong><span>승인·권리·동의가 바뀌면 같은 트랜잭션에서 공개 목록을 다시 만듭니다. 같은 원고에 동시에 들어온 변경은 순서대로 처리합니다.</span></li>
+        <li><span class="n">SETTINGS</span><strong>설정으로 바뀌는 규칙</strong><span>가격, 배분율, 한도, 동의 문서 버전은 설정값이라 결정이 바뀌어도 데이터베이스 구조를 고치지 않습니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Files</p><h2 id="s3">원고 파일과 열람</h2></div>
+    <div class="sec-body">
+      <ol class="flow">
+        <li><strong>예약</strong><span>DB가 경로·형식·크기·한도·저장 용량을 확인하고 예약</span></li>
+        <li><strong>업로드</strong><span>브라우저가 서명된 링크로 저장소에 직접 업로드</span></li>
+        <li><strong>처리</strong><span>처리 중 표시로 중복 처리를 막고, 파일 형식 확인과 본문 추출</span></li>
+        <li><strong>등록</strong><span>올린 파일이 예약 내용과 같을 때만 원고와 본문 기록</span></li>
+        <li><strong>열람</strong><span>열람 기록을 남긴 뒤 60초 유효 링크 발급, 변경된 파일은 거부</span></li>
+      </ol>
+      <p class="note"><strong>원문은 테이블에서 직접 조회할 수 없습니다.</strong> 본문은 전문 조회·문단 조회 함수로만 제공되며, 호출할 때마다 열람 기록이 남습니다. 관리자도 예외가 아닙니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Performance</p><h2 id="s4">캐시와 운영</h2></div>
+    <div class="sec-body">
+      <div class="grid two">
+        <div class="card"><span class="kicker">Cache</span><h3>공개 목록만 캐시</h3><p>공개 목록은 모두에게 같아서 캐시하고, 관리자가 수정하면 즉시 캐시를 비웁니다. 동의서 기한이 날짜 단위라 캐시는 한국 시간 자정을 넘기지 않습니다.</p></div>
+        <div class="card"><span class="kicker">Capacity</span><h3>무료 플랜으로 시작</h3><p>Supabase 무료 플랜(DB 500MB·저장소 1GB)에서 원고 90편을 수용하고, 용량이 부족하면 유료 플랜으로 전환합니다. 무료 플랜은 7일간 쓰지 않으면 일시정지됩니다. 화면 호스팅은 상업 이용이라 Vercel Pro가 필요하고, AI 사용량 비용이 따로 듭니다.</p></div>
+        <div class="card"><span class="kicker">Region</span><h3>서울 리전</h3><p>Supabase 서울 리전. 운영 데이터베이스 구조가 검증 환경과 같음을 확인했습니다(9.30).</p></div>
+        <div class="card"><span class="kicker">i18n</span><h3>한국어·영어</h3><p>공개 화면은 같은 구조의 영어 화면을 제공합니다. 원고와 요약은 번역하지 않습니다.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>기술 구조와 보안 원칙</span><span class="mono">SB-DEV-02 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

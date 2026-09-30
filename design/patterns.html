@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="레이아웃과 패턴 · 스토리뱅크 디자인 시스템">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/design/patterns.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>레이아웃과 패턴 · 스토리뱅크 디자인 시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px; }
+  .figs figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .figs figcaption strong { display: block; font-size: 17px; font-weight: 750; }
+  .figs figcaption span { font-size: 14px; color: var(--ink-2); }
+  .phones { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  .phones figure { margin: 0; display: grid; gap: 8px; }
+  .phones .frame { border-radius: 18px; border: 5px solid var(--band); }
+  .phones img { aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
+  .phones figcaption { font-size: 13px; color: var(--ink-2); text-align: center; }
+  @media (max-width: 760px) { .phones { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 디자인 시안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DS-04</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Layouts &amp; Patterns</p>
+      <h1>레이아웃과<br>공통 패턴</h1>
+    </div>
+    <p class="lead">모든 화면은 공개 레이아웃과 관리자 레이아웃 중 하나를 씁니다. 목록에서 상세, 잠김에서 열림, 빈 상태에서 데이터 표시로 바뀌는 방식을 모든 화면에서 통일했습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>레이아웃</dt><dd>공개 · 관리자</dd></div>
+    <div class="fact"><dt>화면 폭 검사</dt><dd class="num">320–1440px</dd></div>
+    <div class="fact"><dt>목록</dt><dd>20개씩 "더 보기"</dd></div>
+    <div class="fact"><dt>언어</dt><dd>한국어 · 영어</dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Shells</p><h2 id="s1">두 가지 레이아웃</h2></div>
+    <div class="sec-body">
+      <div class="figs">
+        <figure><div class="frame desktop"><img src="../shots/P05-manuscript-desktop.jpg" alt="공개 레이아웃의 원고 상세 화면"></div><figcaption><strong>공개 레이아웃</strong><span>한 줄 헤더(로고 · 메뉴 3개 · 계정 메뉴), 본문, 푸터로 구성합니다. 1200px 미만에서는 메뉴가 햄버거 버튼으로 접히고, 장바구니 수는 헤더에 항상 보입니다.</span></figcaption></figure>
+        <figure><div class="frame desktop"><img src="../shots/A07-manuscripts-desktop.jpg" alt="관리자 레이아웃의 원고 목록 화면"></div><figcaption><strong>관리자 레이아웃</strong><span>왼쪽 사이드 메뉴(운영 · 원고 · 거래)와 오른쪽 작업 영역으로 구성합니다. 모바일에서는 메뉴 버튼으로 엽니다.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / List → Detail</p><h2 id="s2">목록과 상세</h2></div>
+    <div class="sec-body">
+      <ol class="flow">
+        <li><strong>조건</strong><span>셀렉트 박스로 조건을 고르고 찾기·조건 지우기 버튼을 둡니다. 조건은 URL에 남아 공유할 수 있습니다.</span></li>
+        <li><strong>목록</strong><span>행마다 상태 배지가 붙은 테이블. 20개씩 "더 보기"로 불러오고, 새로 불러온 첫 행으로 포커스를 옮깁니다.</span></li>
+        <li><strong>상세</strong><span>페이지 타이틀 아래에 섹션 패널을 쌓고, 패널마다 제목과 주요 동작을 하나씩 둡니다.</span></li>
+        <li><strong>저장</strong><span>저장하면 그 자리에서 값이 바뀌고, 목록은 이미 불러온 행과 포커스 위치를 그대로 유지합니다.</span></li>
+      </ol>
+      <div class="figs">
+        <figure><div class="frame desktop"><img src="../shots/A21-products-desktop.jpg" alt="상품 관리 목록"></div><figcaption><strong>목록에서 바로 수정</strong><span>상품 목록에서는 행 단위로 가격과 판매 설정을 저장하고, 저장한 행만 갱신합니다.</span></figcaption></figure>
+        <figure><div class="frame"><img src="../shots/A13-episode-strips.jpg" alt="에피소드 편집 화면 전체"></div><figcaption><strong>섹션 패널형 상세</strong><span>에피소드 편집: 버전 이력, 새 버전, 미리보기, 가격·판매 설정을 섹션으로 나눴습니다.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / States</p><h2 id="s3">상태 패턴</h2><p>잠김 · 대기 · 없음 · 안내</p></div>
+    <div class="sec-body">
+      <div class="figs">
+        <figure><div class="frame desktop"><img src="../shots/P04-episode-guest-desktop.jpg" alt="방문자에게 전문이 잠긴 에피소드 상세"></div><figcaption><strong>잠김</strong><span>전문 영역에 잠긴 이유와 다음 행동(로그인, 멤버십 안내, 내 서재)을 보여 줍니다.</span></figcaption></figure>
+        <figure><div class="frame desktop"><img src="../shots/P13-library-desktop.jpg" alt="읽을 수 있음과 결제 확인 대기가 섞인 내 서재"></div><figcaption><strong>대기</strong><span>결제 확인 대기 회차는 상태 배지와 "주문 보기" 링크로 구분합니다.</span></figcaption></figure>
+        <figure><div class="frame desktop"><img src="../shots/NF-not-found-desktop.jpg" alt="찾을 수 없는 화면"></div><figcaption><strong>없음</strong><span>없는 주소와 비공개 에피소드는 같은 안내로 보여 존재 여부를 드러내지 않습니다.</span></figcaption></figure>
+        <figure><div class="frame desktop"><img src="../shots/P15-privacy-desktop.jpg" alt="시행 전 안내 배너가 있는 개인정보 처리방침"></div><figcaption><strong>안내</strong><span>시행 전 문서, 약관 재동의 같은 안내는 본문 위 배너로 알립니다.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Responsive</p><h2 id="s4">모바일</h2><p>390px 기준</p></div>
+    <div class="sec-body">
+      <div class="phones">
+        <figure><div class="frame"><img src="../shots/P01-home-mobile.jpg" alt="첫 화면 모바일"></div><figcaption>첫 화면</figcaption></figure>
+        <figure><div class="frame"><img src="../shots/P04-episode-guest-mobile.jpg" alt="에피소드 상세 모바일"></div><figcaption>에피소드 상세</figcaption></figure>
+        <figure><div class="frame"><img src="../shots/P05-manuscript-mobile.jpg" alt="원고 상세 모바일"></div><figcaption>회차 선택</figcaption></figure>
+        <figure><div class="frame"><img src="../shots/P06-cart-mobile.jpg" alt="장바구니 모바일"></div><figcaption>장바구니</figcaption></figure>
+        <figure><div class="frame"><img src="../shots/A02-dashboard-mobile.jpg" alt="운영 대시보드 모바일"></div><figcaption>운영 대시보드</figcaption></figure>
+      </div>
+      <p class="prose">좁은 화면에서는 테이블 영역 안에서만 가로 스크롤이 생기고, 페이지 전체에는 생기지 않습니다. 버튼 텍스트는 어떤 화면 폭에서도 한 줄로 표시합니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s5">
+    <div class="sec-label"><p class="eyebrow">05 / Locale</p><h2 id="s5">다국어</h2></div>
+    <div class="sec-body">
+      <div class="figs">
+        <figure><div class="frame desktop"><img src="../shots/EN-home-desktop.jpg" alt="영어 첫 화면"></div><figcaption><strong>/en 첫 화면</strong><span>같은 구조, 영어 문구. 첫 화면에서 한국어·영어를 고릅니다.</span></figcaption></figure>
+        <figure><div class="frame desktop"><img src="../shots/EN-episode-desktop.jpg" alt="영어 에피소드 상세"></div><figcaption><strong>/en 에피소드 상세</strong><span>원고와 요약은 번역하지 않고 한국어로 표시하며, 스크린 리더가 한국어로 읽도록 lang 속성을 지정합니다.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>화면 틀과 패턴</span><span class="mono">SB-DS-04 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

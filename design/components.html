@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="컴포넌트 · 스토리뱅크 디자인 시스템">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/design/components.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>컴포넌트 · 스토리뱅크 디자인 시스템</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .specimen { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); padding: 22px; display: grid; gap: 16px; }
+  .specimen-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  .state { display: grid; gap: 6px; justify-items: start; }
+  .state > span { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); }
+  .btn { font: inherit; font-size: 15px; font-weight: 700; min-height: 44px; padding: 0 18px; border-radius: 2px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; gap: 8px; cursor: default; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .btn.primary.is-hover { background: var(--accent-strong); }
+  .btn.is-focus { outline: 2px solid #3856c8; outline-offset: 2px; }
+  .btn.is-disabled { opacity: 0.45; }
+  .btn.danger { color: #ac3031; border-color: #ac3031; }
+  .btn.dense { min-height: 34px; font-size: 14px; padding: 0 12px; }
+  .btn.soft { border-radius: 12px; }
+  .spinner { width: 14px; height: 14px; border-radius: 999px; border: 2px solid currentColor; border-right-color: transparent; }
+  .field { display: grid; gap: 6px; width: 240px; }
+  .field label { font-size: 13px; font-weight: 700; color: var(--ink-2); }
+  .field .input { min-height: 44px; border: 1px solid var(--rule-strong); border-radius: 2px; background: var(--surface); padding: 0 12px; display: flex; align-items: center; font-size: 15px; color: var(--ink); }
+  .field .input.is-error { border-color: #ac3031; box-shadow: inset 0 0 0 1px #ac3031; }
+  .field small { font-size: 13px; color: var(--ink-3); }
+  .field small.error { color: #ac3031; }
+  .check { display: flex; gap: 10px; align-items: center; font-size: 15px; }
+  .check i { width: 20px; height: 20px; border: 1px solid var(--rule-strong); border-radius: 2px; display: grid; place-items: center; background: var(--surface); font-style: normal; font-size: 13px; color: var(--paper); }
+  .check i.on { background: var(--accent); border-color: var(--accent); }
+  .alert { border-left: 3px solid; padding: 12px 16px; font-size: 14px; border-radius: 0 4px 4px 0; max-width: 520px; }
+  .alert.error { border-color: #ac3031; background: color-mix(in srgb, #ac3031 8%, var(--surface)); }
+  .alert.info { border-color: var(--accent); background: var(--accent-soft); }
+  .dialog { max-width: 420px; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; box-shadow: var(--shadow-frame); padding: 22px; display: grid; gap: 12px; }
+  .dialog h4 { font-size: 18px; }
+  .dialog p { font-size: 14px; color: var(--ink-2); }
+  .dialog .actions { display: flex; justify-content: flex-end; gap: 8px; }
+  .empty { border: 1px dashed var(--rule-strong); border-radius: 4px; padding: 28px; text-align: center; display: grid; gap: 6px; justify-items: center; }
+  .empty strong { font-size: 17px; }
+  .empty span { font-size: 14px; color: var(--ink-3); }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 디자인 시안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-DS-03</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Component Standards</p>
+      <h1>구조와<br>상태 기준</h1>
+    </div>
+    <p class="lead">화면이 달라져도 같은 구조와 크기, 상태를 유지하는 공통 컴포넌트입니다. 모든 화면은 이 컴포넌트로만 만들고, 상태마다 모양과 문구를 정해 두었습니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>상태 표기</dt><dd>기본 · 호버 · 포커스 · 로딩 · 비활성</dd></div>
+    <div class="fact"><dt>터치 영역</dt><dd class="num">최소 44 × 44px <small>공개 화면</small></dd></div>
+    <div class="fact"><dt>주요 버튼</dt><dd>영역마다 하나</dd></div>
+    <div class="fact"><dt>버튼 문구</dt><dd>동작이 드러나게 <small>"3회차 담기"</small></dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Button</p><h2 id="s1">버튼</h2><p>주요 · 보조 · 위험 · 텍스트</p></div>
+    <div class="sec-body">
+      <div class="specimen" aria-label="버튼 상태 예시">
+        <div class="specimen-row">
+          <div class="state"><span>default</span><span class="btn primary">선택한 회차 담기</span></div>
+          <div class="state"><span>hover</span><span class="btn primary is-hover">선택한 회차 담기</span></div>
+          <div class="state"><span>focus</span><span class="btn primary is-focus">선택한 회차 담기</span></div>
+          <div class="state"><span>loading</span><span class="btn primary"><i class="spinner" aria-hidden="true"></i>담는 중</span></div>
+          <div class="state"><span>disabled</span><span class="btn primary is-disabled">선택한 회차 담기</span></div>
+        </div>
+        <div class="specimen-row">
+          <div class="state"><span>secondary</span><span class="btn">조건 지우기</span></div>
+          <div class="state"><span>danger</span><span class="btn danger">주문 취소</span></div>
+          <div class="state"><span>dense · 관리자</span><span class="btn dense">가격 저장</span></div>
+          <div class="state"><span>soft · 공개</span><span class="btn primary soft">검색</span></div>
+        </div>
+      </div>
+      <ul class="rows">
+        <li><span class="n">BTN-1</span><strong>주요 버튼은 하나만</strong><span>한 영역에 주요 버튼은 하나만 두고, 나머지는 보조 버튼으로 만듭니다.</span></li>
+        <li><span class="n">BTN-2</span><strong>로딩 중에는 비활성</strong><span>페이지 로딩이 끝나기 전에 제출 버튼이 눌려 잘못 전송되지 않도록, 로딩 중에는 버튼을 비활성화합니다.</span></li>
+        <li><span class="n">BTN-3</span><strong>되돌릴 수 없는 동작</strong><span>주문 취소·제외처럼 되돌릴 수 없는 동작은 확인 모달을 띄우고, "그대로 두기" 버튼에 먼저 포커스를 둡니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Input</p><h2 id="s2">입력과 선택</h2></div>
+    <div class="sec-body">
+      <div class="specimen" aria-label="입력 상태 예시">
+        <div class="specimen-row">
+          <div class="field"><label>원고 제목</label><span class="input">시장 골목 떡집의 마흔 해</span><small>1~200자</small></div>
+          <div class="field"><label>가격 (원)</label><span class="input is-error">-1,000</span><small class="error">0부터 100,000,000 사이의 정수로 입력해 주세요.</small></div>
+          <div class="field"><label>이야기 종류</label><span class="input" style="justify-content:space-between">실화 <span aria-hidden="true">⌄</span></span><small>네이티브 셀렉트 박스</small></div>
+        </div>
+        <div class="specimen-row" style="gap:24px">
+          <span class="check"><i class="on" aria-hidden="true">✓</i>원고 등록 책임 고지를 확인했어요 (필수)</span>
+          <span class="check"><i aria-hidden="true"></i>외부 AI 처리에 동의해요 (선택)</span>
+        </div>
+      </div>
+      <p class="prose">오류 메시지는 입력란 바로 아래에 무엇이 틀렸고 어떻게 고치면 되는지 적습니다. 제출에 실패하면 첫 번째 오류 입력란으로 포커스를 옮깁니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Feedback</p><h2 id="s3">알림과 모달</h2></div>
+    <div class="sec-body">
+      <div class="grid two">
+        <div class="specimen">
+          <div class="alert error">이미 주문했거나 구매한 회차예요.</div>
+          <div class="alert info">결제가 확인되면 내 서재에서 전문을 읽을 수 있어요.</div>
+          <div class="empty"><strong>찾는 장면이 없어요</strong><span>다른 검색어나 조건으로 찾아보세요.</span></div>
+        </div>
+        <div class="specimen" style="place-items:center">
+          <div class="dialog" role="img" aria-label="주문 취소 확인 모달 예시">
+            <h4>주문을 취소할까요?</h4>
+            <p>취소한 주문은 되돌릴 수 없어요. 다시 사려면 새로 주문해 주세요.</p>
+            <div class="actions"><span class="btn is-focus">그대로 두기</span><span class="btn danger">주문 취소</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="prose">저장에 성공하면 별도 토스트 없이 화면에 바뀐 값을 바로 보여 줍니다. 누른 버튼이 사라지는 경우에는 바뀐 상태로 포커스를 옮겨 스크린 리더가 결과를 읽을 수 있게 합니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Library</p><h2 id="s4">컴포넌트 페이지</h2><p>제품에 포함된 컴포넌트 기준 페이지</p></div>
+    <div class="sec-body">
+      <div class="frame"><img src="../shots/DS-components-strips.jpg" alt="제품의 공통 컴포넌트 페이지 전체를 세로로 나눠 이어 붙인 화면" loading="lazy"></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>분류</th><th>컴포넌트</th></tr></thead>
+          <tbody>
+            <tr><td>동작</td><td>버튼, 버튼형 링크, 텍스트 링크, 확인 모달</td></tr>
+            <tr><td>입력</td><td>텍스트 필드, 텍스트 영역, 셀렉트 박스, 체크박스, 라디오, 파일 첨부, 필드셋</td></tr>
+            <tr><td>표시</td><td>상태 배지, 배지, 정보 목록, 카드, 패널, 페이지 타이틀</td></tr>
+            <tr><td>목록</td><td>데이터 테이블, 더 보기, 필터 폼, 빈 상태, 스켈레톤</td></tr>
+            <tr><td>레이아웃</td><td>공개 레이아웃, 관리자 레이아웃, 본문 건너뛰기, 알림</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>컴포넌트 구조와 상태</span><span class="mono">SB-DS-03 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>

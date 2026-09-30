@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="서비스 기획서 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/planning/overview.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>서비스 기획서 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .money { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 12px; align-items: stretch; }
+  .money .card { text-align: left; }
+  .money .card strong { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; }
+  .money .to { align-self: center; font-size: 22px; color: var(--ink-3); }
+  @media (max-width: 760px) { .money { grid-template-columns: minmax(0, 1fr); } .money .to { transform: rotate(90deg); justify-self: center; } }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 기획안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-PLAN-01</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Service Planning Brief</p>
+      <h1>스토리뱅크<br>서비스 기획서</h1>
+    </div>
+    <p class="lead">스토리뱅크는 인터뷰 원고를 <strong>에피소드 단위</strong>로 나누고, 원고마다 <strong>권리와 동의</strong>를 확인한 뒤, 필요한 회차만 골라 구매하는 스토리 라이선스 서비스입니다. 이 문서는 사업 방향과 서비스 컨셉, 사용자와 흐름, 거래와 권리의 원칙을 정리합니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>과제</dt><dd>한국콘텐츠진흥원 스토리뱅크</dd></div>
+    <div class="fact"><dt>투입 원고</dt><dd class="num">최대 90편 <small>판매 동의 범위 확인분</small></dd></div>
+    <div class="fact"><dt>거래 단위</dt><dd>에피소드(회차)</dd></div>
+    <div class="fact"><dt>납품</dt><dd class="num">10.30 <small>계약 납품물 C1–C5</small></dd></div>
+  </dl>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Background</p><h2 id="s1">배경과 문제</h2></div>
+    <div class="sec-body">
+      <p class="intro">좋은 이야기는 원고 한 편 안에 여러 장면으로 흩어져 있습니다. 원고를 통째로 거래하면 필요한 장면을 찾기 어렵고, 누가 어디까지 쓰도록 허락했는지 확인하기도 어렵습니다.</p>
+      <div class="grid">
+        <div class="card"><span class="kicker">Problem 1</span><h3>찾기 어려운 단위</h3><p>원고 단위로는 "새벽에 불을 켜는 떡집" 같은 장면을 찾을 수 없습니다. 장면과 원문 위치가 연결되어야 검색하고 인용할 수 있습니다.</p></div>
+        <div class="card"><span class="kicker">Problem 2</span><h3>확인하기 어려운 권리</h3><p>구술자, 작가, 출판권자가 얽혀 있어 원고마다 공개와 판매 범위가 다릅니다. 동의 증빙이 없는 원고는 팔 수 없어야 합니다.</p></div>
+        <div class="card"><span class="kicker">Problem 3</span><h3>남지 않는 기록</h3><p>누가 언제 전문을 읽었는지, 어떤 버전을 판매했는지 기록이 남아야 정산하고 분쟁에 대응할 수 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Goals</p><h2 id="s2">서비스 목표</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">GOAL 1</span><strong>장면 단위로 찾게 한다</strong><span>원고를 에피소드로 나누고 원문 위치를 연결해, 필요한 장면을 검색과 요약으로 바로 찾게 합니다.</span></li>
+        <li><span class="n">GOAL 2</span><strong>확인된 것만 판다</strong><span>권리 기록과 동의 증빙이 없는 에피소드는 공개되거나 판매되지 않게 합니다.</span></li>
+        <li><span class="n">GOAL 3</span><strong>거래를 기록으로 남긴다</strong><span>주문, 결제 확인, 이용 기록, 정산, 지급이 한 흐름으로 이어지게 합니다.</span></li>
+      </ul>
+      <p class="note"><strong>성과 측정.</strong> 정량 성과는 공인기관(KTR 등)이 측정합니다. 측정 항목과 목표치는 발주자와 확정할 예정입니다(U3).</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Concept</p><h2 id="s3">서비스 컨셉</h2><p>나누기 · 확인하기 · 거래하기</p></div>
+    <div class="sec-body">
+      <p class="intro">검수를 마친 에피소드만 공개 목록에 올립니다. 도서관 목록 카드처럼 출처와 권리를 분명히 보여 주면서, 카드 한 장으로 가볍게 훑어볼 수 있게 합니다.</p>
+      <div class="grid">
+        <div class="card tinted-yellow"><span class="kicker">나누기</span><h3>원고 → 에피소드</h3><p>원고를 올리면 본문과 장·절·문단 구조를 추출하고, 문단 범위로 에피소드를 만듭니다. 에피소드는 버전별로 저장되어 원문 위치가 유지됩니다.</p></div>
+        <div class="card tinted-mint"><span class="kicker">확인하기</span><h3>권리와 동의</h3><p>권리 판정을 버전별로 기록하고 동의서의 범위와 기한을 확인합니다. 조건을 충족하지 못하면 판매가 자동으로 중지됩니다.</p></div>
+        <div class="card tinted-sky"><span class="kicker">거래하기</span><h3>회차 선택과 정산</h3><p>필요한 회차만 골라 주문하고, 결제가 확인되면 이용 기록과 저작권자 몫의 정산 내역이 함께 생깁니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / People</p><h2 id="s4">사용자와 역할</h2><p>공급 · 수요 · 운영</p></div>
+    <div class="sec-body">
+      <div class="grid two">
+        <div class="card"><span class="kicker">공급</span><h3>원고를 내놓는 쪽</h3><p>발주사가 보유한 인터뷰 원고(판매 동의 범위를 확인한 원고)와, 직접 쓴 원고를 올리는 회원 작가.</p></div>
+        <div class="card"><span class="kicker">수요</span><h3>이야기를 찾는 쪽</h3><p>다큐멘터리·드라마·영화·웹툰·출판·교육 분야에서 소재와 장면을 찾는 기획자와 작가.</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>사용자</th><th>하는 일</th><th>볼 수 있는 것</th></tr></thead>
+          <tbody>
+            <tr><td>방문자</td><td>탐색, 에피소드 요약과 공개 발췌 보기</td><td>제목·승인 요약·공개 발췌·판매 상태</td></tr>
+            <tr><td>무료 회원</td><td>검색, 원고 올리기, 유료 전환 신청</td><td>방문자와 같음 + 내가 올린 원고의 진행 단계</td></tr>
+            <tr><td>유료 회원</td><td>회차 선택·장바구니·주문, 전문 읽기</td><td>공개 목록의 전문, 구매한 에피소드는 구매 시점 버전</td></tr>
+            <tr><td>원고 제공 회원</td><td>원고 등록, 책임 고지·외부 AI 처리 동의</td><td>내 원고의 접수·검수·반려 사유</td></tr>
+            <tr><td>관리자</td><td>원고 검수·분할·승인, 권리·동의서, 상품·주문·정산, 회원 관리</td><td>관리자 화면 전체(열람은 기록으로 남음)</td></tr>
+            <tr><td>저작권자</td><td>(시스템 외부) 정산 대상</td><td>정산 내역과 지급 기록의 기준</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>대표 시나리오</h3>
+      <ul class="rows">
+        <li><span class="n">BUYER</span><strong>다큐 작가가 소재를 찾을 때</strong><span>"시장"으로 검색해 요약을 훑고, 원고 상세에서 필요한 회차 둘을 골라 주문합니다. 결제가 확인되면 내 서재에서 전문을 읽습니다.</span></li>
+        <li><span class="n">WRITER</span><strong>회원 작가가 원고를 올릴 때</strong><span>DOCX 원고를 올리고 책임 고지에 동의합니다. 마이페이지에서 접수 → 검수 → 분할 → 공개 단계를 확인하고, 반려되면 사유를 봅니다.</span></li>
+        <li><span class="n">ADMIN</span><strong>관리자가 원고를 공개할 때</strong><span>원고를 접수하고 권리를 기록한 뒤 문단 범위로 에피소드를 만들어 승인합니다. 조건이 맞으면 상품이 자동으로 판매 상태가 됩니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s5">
+    <div class="sec-label"><p class="eyebrow">05 / Flow</p><h2 id="s5">핵심 흐름</h2><p>원고가 등록되어 판매되기까지</p></div>
+    <div class="sec-body">
+      <ol class="flow">
+        <li><span class="who">회원 · 관리자</span><strong>원고 등록</strong><span>TXT·DOCX·PDF, 책임 고지 동의</span></li>
+        <li><span class="who">시스템</span><strong>본문 추출</strong><span>문단·장·절·쪽 구조와 원문 지문(해시)</span></li>
+        <li><span class="who">관리자</span><strong>접수·분할</strong><span>문단 범위로 에피소드·버전 생성</span></li>
+        <li><span class="who">관리자</span><strong>권리·승인</strong><span>권리 기록, 동의서, 버전 승인</span></li>
+        <li><span class="who">시스템</span><strong>상품 등재</strong><span>판매 조건 확인 후 판매 상태 결정</span></li>
+        <li><span class="who">회원</span><strong>탐색·선택</strong><span>검색, 회차 선택, 장바구니</span></li>
+        <li><span class="who">회원 · 관리자</span><strong>주문·결제 확인</strong><span>중복 주문 방지, 관리자 결제 확인</span></li>
+        <li><span class="who">회원 · 관리자</span><strong>서재·정산</strong><span>전문 읽기, 정산 내역과 지급 기록</span></li>
+      </ol>
+      <p class="note">위 흐름은 알파 서비스에서 처음부터 끝까지 동작합니다(2026.09.30, 로컬 시연 환경·합성 데이터 기준). 배포 주소는 계정 준비 뒤 공유합니다. AI 분할·태그·의미 검색은 다음 단계에서 이 흐름에 추가합니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s6">
+    <div class="sec-label"><p class="eyebrow">06 / Membership</p><h2 id="s6">멤버십과 거래 규칙</h2></div>
+    <div class="sec-body">
+      <div class="grid two">
+        <div class="card"><span class="kicker">무료</span><h3>검색과 요약</h3><p>공개 목록 검색, 승인 요약과 공개 발췌 보기, 원고 올리기. 전문 열람과 구매는 유료 회원만 할 수 있습니다.</p></div>
+        <div class="card"><span class="kicker">유료</span><h3>전문과 구매</h3><p>공개 목록의 전문 읽기, 회차 선택 구매. 구매한 에피소드는 공개 목록에서 내려가도 서재에서 계속 읽을 수 있습니다.</p></div>
+      </div>
+      <h3>돈의 흐름</h3>
+      <div class="money" aria-label="회차 가격이 저작권자 몫과 플랫폼 몫으로 나뉘는 흐름">
+        <div class="card"><span class="kicker">회차 가격</span><strong>관리자가 지정</strong><p>주문 시점 가격을 주문에 저장합니다.</p></div>
+        <span class="to" aria-hidden="true">→</span>
+        <div class="card"><span class="kicker">결제 확인</span><strong>정산 내역 생성</strong><p>저작권자 70%(설정값), 원 단위 내림.</p></div>
+        <span class="to" aria-hidden="true">→</span>
+        <div class="card"><span class="kicker">지급</span><strong>관리자가 기록</strong><p>송금은 시스템 밖에서 하고, 지급 사실만 기록합니다.</p></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>규칙</th><th>현재(개발 기본안)</th><th>결정 대기</th></tr></thead>
+          <tbody>
+            <tr><td>가격</td><td>관리자가 회차별로 정하고 주문 시점 가격을 저장</td><td>글자 수 기반·저작권자 지정(U2)</td></tr>
+            <tr><td>구매 범위</td><td>전문 열람과 비상업 참고</td><td>상업적 활용 라이선스의 건별 판매(U2)</td></tr>
+            <tr><td>유료 전환</td><td>신청 후 관리자 승인</td><td>구독 또는 회차별 결제(U4)</td></tr>
+            <tr><td>결제</td><td>주문 생성 후 관리자 결제 확인</td><td>PG 연동(U1)</td></tr>
+            <tr><td>배분</td><td>저작권자 70%(설정값)</td><td>배분율(U16)</td></tr>
+            <tr><td>한도</td><td>한 번에 50개 담기, 장바구니 100개, 결제 확인 대기 주문 5개</td><td>설정값</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">가격·배분율·한도는 설정값이라 결정이 나면 설정만 바꿉니다. PG 결제 연동과 구독 결제는 추가 개발이 필요합니다.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s7">
+    <div class="sec-label"><p class="eyebrow">07 / Rights</p><h2 id="s7">권리·동의·개인정보 원칙</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">R1</span><strong>회원 업로드</strong><span>업로드 시 동의한 책임 고지 범위 안에서 요약·발췌를 공개하고 에피소드를 판매합니다. 저작권 책임은 올린 회원에게 있으며 계약서는 받지 않습니다.</span></li>
+        <li><span class="n">R2</span><strong>관리자 등록</strong><span>보유 원고는 동의서 파일(스캔 이미지 가능)로 증빙합니다. 확인된 동의서의 범위와 보관 기한 안에서만 공개하고 판매합니다.</span></li>
+        <li><span class="n">R3</span><strong>판매 차단</strong><span>권리 기록이 없거나 필요한 범위의 동의가 없으면 판매 상태가 "판매 차단(동의 없음)"으로 바뀝니다. 이용 제한이 있으면 "조건부 판매"로 전환하고 제한 내용을 함께 표시합니다.</span></li>
+        <li><span class="n">R4</span><strong>외부 AI 처리</strong><span>외부 AI 처리에 동의한 원고만 AI 분할·임베딩에 보냅니다(다음 단계에서 적용).</span></li>
+        <li><span class="n">R5</span><strong>열람 기록</strong><span>전문, 원본 파일, 동의서를 열 때마다 누가 언제 열었는지 기록합니다. 파일은 60초 동안만 유효한 링크로 엽니다.</span></li>
+        <li><span class="n">R6</span><strong>버전 보존</strong><span>에피소드와 권리 기록은 수정하지 않고 새 버전으로 추가합니다. 주문에는 주문 시점의 버전·권리·가격을 복사해 둡니다.</span></li>
+        <li><span class="n">R7</span><strong>개인정보</strong><span>요약과 발췌에는 실명을 쓰지 않습니다. 탈퇴하면 개인정보를 마스킹하고, 거래 기록은 전자상거래법에 따라 5년간 보관합니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s8">
+    <div class="sec-label"><p class="eyebrow">08 / Scope</p><h2 id="s8">개발 단계와 범위</h2><p>도메인마다 DB → API → 화면 → 합성 데이터를 한 단계로</p></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>단계</th><th>내용</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td>B1 기반</td><td>권한 경계, 감사 로그, 오류 코드, 요청 추적, 통합 테스트</td><td><span class="stamp is-built">완료 9.29</span></td></tr>
+            <tr><td>B2 회원</td><td>가입·로그인·재설정, 동의 기록, 마이페이지, 유료 전환, 회원 관리</td><td><span class="stamp is-built">완료 9.29</span></td></tr>
+            <tr><td>B3 기본 흐름</td><td>원고 업로드·추출 → 분할 → 승인 → 상품 → 탐색 → 주문 → 정산 → 서재</td><td><span class="stamp is-built">완료 9.30</span></td></tr>
+            <tr><td>B4 AI 처리</td><td>작업 대기열, AI 분할·요약, 태그·키워드, 임베딩·의미 검색</td><td><span class="stamp is-next">예정</span></td></tr>
+            <tr><td>B5 권리 심화</td><td>3단계 승인 게이트, 간이 계약 PDF, 외부 AI 전송 통제</td><td><span class="stamp is-next">예정</span></td></tr>
+            <tr><td>B6 운영·증빙</td><td>감사 로그 화면, 내보내기, KPI 측정, 통합 점검</td><td><span class="stamp is-next">예정</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">B4–B6의 일정과 범위는 개발(D3) 계약과 함께 별도로 협의합니다.</p>
+      <h3>이번 과제에서 제외한 것</h3>
+      <div class="chips">
+        <span class="chip">전자서명 기반 전자계약</span><span class="chip">저작권자 자동 송금</span><span class="chip">번역·해외 판매</span><span class="chip">모바일 앱</span><span class="chip">OCR·STT·HWP</span><span class="chip">기관별 멀티테넌시</span><span class="chip">유사도 탐지·2차 저작 추적</span><span class="chip">환불 처리</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s9">
+    <div class="sec-label"><p class="eyebrow">09 / Launch</p><h2 id="s9">정식 공개 전 조건과 가정</h2></div>
+    <div class="sec-body">
+      <div class="grid two">
+        <div class="card"><span class="kicker">공개 전 조건</span><h3>오픈 체크리스트</h3><p>관리자 2단계 인증, 가입 보호(CAPTCHA), 외부 메일 발송(SMTP), 약관·개인정보 처리방침 법무 검토, 연출 이미지 교체, 결제 방식 확정.</p></div>
+        <div class="card"><span class="kicker">가정과 위험</span><h3>일정에 영향을 주는 것</h3><p>동의 범위가 확인되기 전에는 합성 데이터로만 시연합니다. PG 심사는 약 3주 걸립니다. 무료 인프라는 7일간 쓰지 않으면 일시정지되어 시연 전 깨우기 절차가 필요합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s10">
+    <div class="sec-label"><p class="eyebrow">10 / Glossary</p><h2 id="s10">용어</h2></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>용어</th><th>뜻</th></tr></thead>
+          <tbody>
+            <tr><td>원고</td><td>회원이나 관리자가 올린 파일 한 편. 원본 파일은 원문, 추출한 텍스트는 본문이라고 부릅니다.</td></tr>
+            <tr><td>에피소드 · 회차</td><td>원고의 문단 범위로 만든 거래 단위. 회차는 원고 안에서의 순서(E1, E2…)입니다.</td></tr>
+            <tr><td>승인 요약 · 공개 발췌</td><td>관리자가 승인한 요약, 원문 그대로 인용하는 짧은 문장. 누구나 볼 수 있습니다.</td></tr>
+            <tr><td>전문</td><td>에피소드의 본문 전체. 유료 회원과 구매자만 읽습니다.</td></tr>
+            <tr><td>권리 기록 · 동의서</td><td>원고의 출판권·공개·2차 활용 판정(버전별)과 그 증빙 파일.</td></tr>
+            <tr><td>판매 상태</td><td>등재 대기·판매 차단(동의 없음)·조건부 판매·판매 중·판매 중지·판매 안 함.</td></tr>
+            <tr><td>이용 기록 · 정산 내역 · 지급 기록</td><td>결제 확인 때 생기는 구매 증빙, 저작권자 몫, 실제 지급 사실.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="decision" aria-labelledby="decide">
+    <p class="eyebrow">Decision</p>
+    <h2 id="decide">이번 단계에서 결정이 필요한 항목</h2>
+    <div class="decision-grid" data-reviews></div>
+    <p>결정 전에도 개발은 기본안으로 진행하고, 결정이 나면 설정이나 해당 기능을 바꿉니다.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>서비스 기획서</span><span class="mono">SB-PLAN-01 · 2026.09.30</span></div>
+</footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/render.js"></script>
+</body>
+</html>

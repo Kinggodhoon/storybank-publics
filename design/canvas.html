@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="디자인 캔버스 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/design/canvas.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>디자인 캔버스 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  html, body { height: 100%; }
+  body { overflow: hidden; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+  .cv-top { display: flex; align-items: center; gap: 10px; padding: 10px 16px; padding-top: calc(10px + env(safe-area-inset-top, 0px)); border-bottom: 1px solid var(--rule); background: var(--surface); }
+  .cv-top .brand { font-size: 15px; }
+  .cv-tools { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .cv-tool { font: inherit; font-size: 13px; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 11px; cursor: pointer; }
+  .cv-tool:hover { border-color: var(--rule-strong); }
+  .cv-tool.primary { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+  #cv-zoom { min-width: 56px; text-align: center; font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-2); }
+  #cv-nav-toggle { display: none; }
+  .cv-main { display: grid; grid-template-columns: 264px minmax(0, 1fr); min-height: 0; }
+  .cv-side { border-right: 1px solid var(--rule); background: var(--surface); overflow-y: auto; padding: 16px 12px 24px; display: grid; gap: 22px; align-content: start; }
+  .cv-side h2 { font-size: 11px; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); padding: 0 8px 6px; }
+  .cv-side ul { list-style: none; display: grid; gap: 2px; }
+  .cv-side a { display: grid; gap: 1px; padding: 8px 10px; border-radius: 6px; text-decoration: none; font-size: 14px; }
+  .cv-side a span { font-size: 12px; color: var(--ink-3); }
+  .cv-side a .mono { font-size: 11px; color: var(--accent); margin-right: 6px; display: inline; }
+  #cv-boards a { display: block; font-size: 13.5px; }
+  .cv-side a:hover { background: var(--sunken); }
+  .cv-side a[aria-current="page"], .cv-side a[aria-current="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+  .cv-viewport { position: relative; overflow: hidden; background-color: var(--canvas); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); background-size: 22px 22px; cursor: grab; touch-action: none; }
+  .cv-viewport.is-dragging { cursor: grabbing; }
+  /* 보드는 절대 위치라 넓은 바탕 폭을 먼저 준다. 배치 뒤 스크립트가 실제 폭으로 줄인다 */
+  .cv-world { position: absolute; left: 0; top: 0; width: 20000px; transform-origin: 0 0; }
+  .cv-board { position: absolute; background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 40px 44px 44px; box-shadow: 0 2px 4px rgba(17, 24, 37, 0.05), 0 30px 60px -30px rgba(17, 24, 37, 0.25); }
+  .cv-board.is-focused { outline: 6px solid var(--accent); outline-offset: 10px; }
+  .cv-board header { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 28px; }
+  .cv-board header .mono { font-size: 26px; color: var(--accent); }
+  .cv-board header strong { font-size: 44px; font-weight: 800; letter-spacing: -0.04em; }
+  .cv-board header .stamp { font-size: 20px; padding: 4px 14px; border-radius: 5px; }
+  .cv-board .cv-route { font-size: 20px; color: var(--ink-3); margin-left: auto; }
+  .cv-body { display: grid; grid-template-columns: auto 380px; gap: 44px; align-items: start; }
+  .cv-shots { display: flex; gap: 28px; align-items: flex-start; }
+  .cv-img { border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; background: var(--paper); flex: none; }
+  .cv-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .cv-phone { width: 250px; aspect-ratio: 390 / 844; border: 8px solid var(--band); border-radius: 30px; }
+  .cv-notes { display: grid; gap: 10px; font-size: 21px; line-height: 1.55; color: var(--ink-2); }
+  .cv-notes h5 { margin: 14px 0 0; font-size: 15px; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
+  .cv-notes ul { list-style: none; display: grid; gap: 8px; }
+  .cv-notes li { padding-left: 20px; position: relative; }
+  .cv-notes li::before { content: ""; position: absolute; left: 0; top: 0.75em; width: 10px; height: 2px; background: var(--rule-strong); }
+  .cv-notes .chip { font-size: 16px; padding: 3px 9px; }
+  .cv-review { background: var(--caution-soft); color: var(--ink); border-radius: 8px; padding: 10px 14px; font-size: 19px; }
+  .cv-review b { font-family: var(--font-mono); color: var(--caution); margin-right: 6px; }
+  .cv-extras { display: flex; gap: 28px; margin-top: 32px; }
+  .cv-extra { display: grid; gap: 10px; }
+  .cv-extra .mono { font-size: 18px; color: var(--ink-3); }
+  .cv-lead { font-size: 24px; color: var(--ink-2); margin-bottom: 26px; max-width: 46em; }
+  .cv-html h4 { font-size: 18px; font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; color: var(--accent); margin: 26px 0 14px; text-transform: uppercase; }
+  .cv-swatches { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+  .cv-swatch { display: grid; gap: 4px; font-size: 16px; }
+  .cv-swatch i { display: block; height: 110px; border-radius: 10px; border: 1px solid var(--rule); }
+  .cv-swatch b { font-size: 18px; }
+  .cv-swatch code { font-family: var(--font-mono); font-size: 15px; color: var(--ink-3); }
+  .cv-swatch span { color: var(--ink-3); }
+  .cv-type { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  .cv-type > span { font-family: var(--font-mono); font-size: 16px; color: var(--ink-3); }
+  .cv-type p { color: var(--ink); }
+  .cv-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 24px; }
+  .cv-row .stamp { font-size: 20px; padding: 5px 14px; border-radius: 4px; }
+  .cv-shape { width: 220px; height: 120px; display: grid; place-items: center; border: 2px solid var(--rule-strong); background: var(--paper); font-size: 20px; font-weight: 700; }
+  .cv-button { font: inherit; font-size: 22px; font-weight: 700; padding: 14px 26px; border-radius: 12px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--ink); }
+  .cv-button.primary { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .cv-button.danger { color: #ac3031; border-color: #ac3031; }
+  .cv-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cv-drawer { position: absolute; right: 16px; top: 16px; bottom: 16px; width: min(420px, calc(100% - 32px)); background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; box-shadow: var(--shadow-frame); display: grid; grid-template-rows: auto minmax(0, 1fr); overflow: hidden; z-index: 5; }
+  .cv-drawer header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--rule); }
+  .cv-drawer header strong { font-size: 17px; }
+  .cv-drawer ol { list-style: none; overflow-y: auto; padding: 8px; display: grid; gap: 4px; align-content: start; }
+  .cv-drawer li button { width: 100%; text-align: left; font: inherit; background: transparent; border: 0; border-radius: 8px; padding: 12px; display: grid; gap: 4px; cursor: pointer; color: var(--ink); }
+  .cv-drawer li button:hover { background: var(--sunken); }
+  .cv-drawer li button > span:first-child { font-size: 11px; color: var(--accent); }
+  .cv-drawer li .stamp { justify-self: start; }
+  .cv-drawer li b { font-size: 15px; }
+  .cv-drawer li span { font-size: 13px; color: var(--ink-2); }
+  .cv-drawer .cv-review-screens { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); }
+  .cv-status { font-size: 12px; color: var(--ink-3); padding: 8px 16px; padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--rule); background: var(--surface); display: flex; justify-content: space-between; gap: 12px; }
+  @media (max-width: 860px) {
+    #cv-nav-toggle { display: inline-flex; }
+    .cv-main { grid-template-columns: minmax(0, 1fr); }
+    .cv-side { position: absolute; z-index: 6; left: 0; top: 0; bottom: 0; width: min(300px, 86vw); transform: translateX(-102%); transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); box-shadow: var(--shadow-frame); }
+    body.cv-nav-open .cv-side { transform: none; }
+    .cv-main { position: relative; }
+    .cv-tools .cv-hide-narrow { display: none; }
+  }
+</style>
+</head>
+<body data-root="../">
+<header class="cv-top">
+  <button class="cv-tool" id="cv-nav-toggle" type="button" aria-controls="cv-side">목록</button>
+  <a class="brand" href="./"><span class="brand-mark">S</span>디자인 캔버스</a>
+  <div class="cv-tools" role="toolbar" aria-label="캔버스 도구">
+    <button class="cv-tool" id="cv-zoom-out" type="button" aria-label="축소">−</button>
+    <span id="cv-zoom" aria-live="polite">20%</span>
+    <button class="cv-tool" id="cv-zoom-in" type="button" aria-label="확대">+</button>
+    <button class="cv-tool cv-hide-narrow" id="cv-actual" type="button">100%</button>
+    <button class="cv-tool" id="cv-fit" type="button">전체 보기</button>
+    <button class="cv-tool primary" id="cv-review-toggle" type="button" aria-expanded="false" aria-controls="cv-drawer">검토할 항목</button>
+  </div>
+</header>
+
+<div class="cv-main">
+  <nav class="cv-side" id="cv-side" aria-label="캔버스 목록">
+    <div><h2>캔버스</h2><ul id="cv-canvases"></ul></div>
+    <div><h2 id="cv-boards-title">보드</h2><ul id="cv-boards"></ul></div>
+    <div><h2>자료</h2><ul><li><a href="./">디자인 시안 목록</a></li><li><a href="../planning/">기획안</a></li></ul></div>
+  </nav>
+  <div class="cv-viewport" id="cv-viewport">
+    <div class="cv-world" id="cv-world"></div>
+    <section class="cv-drawer" id="cv-drawer" hidden aria-labelledby="cv-drawer-title">
+      <header><strong id="cv-drawer-title">검토할 항목</strong><button class="cv-tool" id="cv-drawer-close" type="button">닫기</button></header>
+      <ol id="cv-review-list"></ol>
+    </section>
+  </div>
+</div>
+
+<footer class="cv-status"><span id="cv-status"></span><span class="mono">+ − 확대·축소 · 0 전체 보기 · 보드를 두 번 누르면 화면에 맞춤</span></footer>
+<script src="../assets/data.js"></script>
+<script src="../assets/canvas.js"></script>
+</body>
+</html>
