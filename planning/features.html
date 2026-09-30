@@ -51,19 +51,19 @@
 
   <dl class="facts">
     <div class="fact"><dt>기능</dt><dd class="num">45개</dd></div>
-    <div class="fact"><dt>구현</dt><dd class="num">27개 <small>B1–B3·B5·B4a·B6a</small></dd></div>
-    <div class="fact"><dt>일부 구현</dt><dd class="num">10개</dd></div>
-    <div class="fact"><dt>예정</dt><dd class="num">8개 <small>B4·B6</small></dd></div>
+    <div class="fact"><dt>구현</dt><dd class="num">34개 <small>B1–B3·B4a·B4b·B5·B6a</small></dd></div>
+    <div class="fact"><dt>일부 구현</dt><dd class="num">5개</dd></div>
+    <div class="fact"><dt>예정</dt><dd class="num">6개 <small>B4c·B6</small></dd></div>
   </dl>
 
   <section class="sec" aria-labelledby="s0">
     <div class="sec-label"><p class="eyebrow">Overview</p><h2 id="s0">진행 현황</h2></div>
     <div class="sec-body">
-      <div class="meter" role="img" aria-label="45개 중 구현 27, 일부 10, 예정 8">
-        <i style="width:60%;background:var(--positive)"></i><i style="width:22.2%;background:var(--info)"></i><i style="width:17.8%;background:var(--rule-strong)"></i>
+      <div class="meter" role="img" aria-label="45개 중 구현 34, 일부 5, 예정 6">
+        <i style="width:75.6%;background:var(--positive)"></i><i style="width:11.1%;background:var(--info)"></i><i style="width:13.3%;background:var(--rule-strong)"></i>
       </div>
-      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 27</span><span><span class="stamp is-partial">일부</span> 10</span><span><span class="stamp is-next">예정</span> 8</span></div>
-      <p class="prose">원고 등록부터 공개 검수, 서재·정산까지 전체 흐름 동작. 권리 심화(B5), 태그·키워드와 태그 조건 탐색(B4a), 감사 로그 화면·내보내기(B6a) 완료. 남은 기능은 AI 처리(B4), 운영·증빙(B6) 단계에서 추가.</p>
+      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 34</span><span><span class="stamp is-partial">일부</span> 5</span><span><span class="stamp is-next">예정</span> 6</span></div>
+      <p class="prose">원고 등록부터 공개 검수, 서재·정산까지 전체 흐름 동작. 권리 심화(B5), 태그·키워드와 태그 조건 탐색(B4a), 감사 로그 화면·내보내기(B6a), AI 처리 기반(B4b: 작업 큐, AI 분할·제안 검수, 나누기·합치기, 외부 AI 통제) 완료. 남은 기능은 의미 검색(B4c), 운영·증빙(B6) 단계에서 추가.</p>
     </div>
   </section>
 
@@ -89,11 +89,11 @@
         <tr><td class="mono">F2-1</td><td>관리자 원고 등록</td><td>DOCX·PDF·TXT, 원작 정보, 저작권자, 중복 경고(파일 해시·이름·본문 해시)</td><td>A-08</td><td><span class="stamp is-built">구현 B3</span></td></tr>
         <tr><td class="mono">F2-2</td><td>회원 원고 등록</td><td>업로드 + 책임 고지 + 외부 AI 처리 동의, 마이페이지에서 진행 단계 확인</td><td>P-14</td><td><span class="stamp is-built">구현 B3</span></td></tr>
         <tr><td class="mono">F2-3</td><td>본문 추출·정규화</td><td>장·절·문단 구조와 문장 시작 위치는 구현. 문장 끝 위치, 머리글·바닥글 제거는 B4. HWP·OCR·STT 제외</td><td>—</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F2-4</td><td>AI 장면·에피소드 분할</td><td>경계 후보와 사전 생성 요약, 관리자 확정</td><td>A-13 · A-14</td><td><span class="stamp is-next">예정 B4</span></td></tr>
-        <tr><td class="mono">F2-5</td><td>처리 작업 큐</td><td>단계별 상태·재시도·로그</td><td>A-10 · A-11</td><td><span class="stamp is-next">예정 B4</span></td></tr>
-        <tr><td class="mono">F2-6</td><td>관리자 검수</td><td>문단 범위로 에피소드·버전 생성, 겹침 방지, 문단 범위 보기는 구현. 원문·AI 결과 나란히 보기, 분할·병합은 B4</td><td>A-12 · A-13</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F2-4</td><td>AI 장면·에피소드 분할</td><td>원고를 빈 구간의 창(약 24,000자)씩 보내 경계 후보·제목·요약 초안·경계 근거를 받고, 승인 전 "AI 후보" 에피소드로 둔 뒤 관리자가 확정. 키 없이 도는 결정적 제공자로 전체 흐름 검증, 실제 AI(Claude) 연결은 키(N1) 뒤</td><td>A-11 · A-13</td><td><span class="stamp is-built">구현 B4b</span></td></tr>
+        <tr><td class="mono">F2-5</td><td>처리 작업 큐</td><td>대기·처리 중·재시도 대기·실패·완료, 세 번까지 자동 재시도와 관리자 재실행, 처리 기록, AI 사용량·하루 예산·동시 실행 한도, "지금 실행". 크론 설정은 Vercel 플랜(N1) 뒤</td><td>A-10 · A-11</td><td><span class="stamp is-built">구현 B4b</span></td></tr>
+        <tr><td class="mono">F2-6</td><td>관리자 검수</td><td>문단 범위로 에피소드·버전 생성, 겹침 방지, 문단 범위 보기, AI 후보 조건, 경계 판정 근거, 승인 전 에피소드 나누기·붙은 두 에피소드 합치기</td><td>A-12 · A-13 · A-14</td><td><span class="stamp is-built">구현 B3·B4b</span></td></tr>
         <tr><td class="mono">F2-7</td><td>승인 기록</td><td>버전 승인·반려, 결정자·시각·메모는 구현. 재색인 표시는 B4</td><td>A-13</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F2-8</td><td>회원 업로드 검수</td><td>접수 대기 목록·동의 기록 확인·접수·반려 사유 회신은 구현. AI 처리 단계는 B4</td><td>A-09</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F2-8</td><td>회원 업로드 검수</td><td>접수 대기 목록·동의 기록 확인·접수·반려 사유 회신, 접수한 원고의 AI 분할 요청(외부 AI 동의가 없으면 막힌 이유와 수동 분할 안내)</td><td>A-09</td><td><span class="stamp is-built">구현 B3·B4b</span></td></tr>
       </tbody></table></div></div>
   </section>
 
@@ -102,8 +102,8 @@
     <div class="sec-body"><div class="table-wrap"><table class="feature-table">
       <thead><tr><th>번호</th><th>기능</th><th>완료 기준</th><th>화면</th><th>상태</th></tr></thead>
       <tbody>
-        <tr><td class="mono">F3-1</td><td>서사 태그</td><td>시간·장소·인물·감정 축(인물은 공개 안 함), 관리자가 버전마다 붙이고 새 버전이 이어받음은 구현. AI 제안 → 관리자 확정은 B4</td><td>A-13 · A-19</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F3-2</td><td>장면 키워드</td><td>에피소드 버전마다 1~5개, 대표 1개, 키워드 유형은 구현(대표는 카드에 #키워드). AI 후보와 핵심 장면 점수는 B4</td><td>A-13 · A-19</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F3-1</td><td>서사 태그</td><td>시간·장소·인물·감정 축(인물은 공개 안 함), 관리자가 버전마다 붙이고 새 버전이 이어받음. AI 제안(기존 태그·새 이름, 신뢰도)을 받거나 거절하고, 제목만 고친 새 버전으로 제안이 따라감</td><td>A-13 · A-19</td><td><span class="stamp is-built">구현 B4a·B4b</span></td></tr>
+        <tr><td class="mono">F3-2</td><td>장면 키워드</td><td>에피소드 버전마다 1~5개, 대표 1개, 키워드 유형(대표는 카드에 #키워드). AI 후보와 핵심 장면 점수를 빈 칸에 넣거나 거절</td><td>A-13 · A-19</td><td><span class="stamp is-built">구현 B4a·B4b</span></td></tr>
         <tr><td class="mono">F3-3</td><td>상세 태그</td><td>검색용 일상어 태그(축마다 10개까지), 카드·상세에 보이고 검색어로 찾음</td><td>A-13</td><td><span class="stamp is-built">구현 B4a</span></td></tr>
         <tr><td class="mono">F3-4</td><td>공개 주제 분류</td><td>이야기 종류(실화·꿈 이야기·단편 소설)와 주제 8개(가족·사랑·우정·성장·일과 직업·여행·음식·동네), 첫 화면 주제 타일과 탐색 조건</td><td>P-01 · P-02</td><td><span class="stamp is-built">구현 B3·B4a</span></td></tr>
         <tr><td class="mono">F3-5</td><td>식별자 매핑</td><td>주문 항목·이용 기록에 구매 시점의 대표 키워드를 남겨 키워드 ↔ 에피소드 ↔ 저작권자 ↔ 정산 식별자가 이어짐</td><td>A-23 · A-24</td><td><span class="stamp is-built">구현 B4a</span></td></tr>
@@ -134,7 +134,7 @@
         <tr><td class="mono">F5-3</td><td>약관·책임 고지</td><td>회원 업로드 동의 항목, 동의 시각·버전 저장은 구현. 문구는 초안이며 발주자 동의서 문구로 교체 예정</td><td>P-14 · P-15</td><td><span class="stamp is-partial">일부</span></td></tr>
         <tr><td class="mono">F5-4</td><td>간이 계약 자동 생성</td><td>"저작권은 작가, 출판권은 레페토" 조건(계약 주체 명칭 확인 필요)을 발급 때 저장하고 PDF 출력, 무효화. 전자서명 없이 동의서·업로드 동의로 증빙</td><td>A-15 · A-18</td><td><span class="stamp is-built">구현 B5</span></td></tr>
         <tr><td class="mono">F5-5</td><td>승인 게이트</td><td>원문 일치 → 민감정보 → 권리자 공개 승인 3단계(순서·메모·이력·되돌림), 판매 차단 조건, 가림(구매자 전문에 ■■)</td><td>A-13 · A-15</td><td><span class="stamp is-built">구현 B3·B5</span></td></tr>
-        <tr><td class="mono">F5-6</td><td>외부 AI 전송 통제</td><td>동의 기록은 구현. 동의 없는 원고의 AI 처리 차단은 B4·B5</td><td>—</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F5-6</td><td>외부 AI 전송 통제</td><td>권리 기록의 외부 AI 판정과 증빙(회원 동의, 확인·미파기·기한 안의 동의서 범위)을 등록·실행·원문 전송·결과 저장마다 다시 확인. 가림 적용 원문만 보내고 보낸 범위를 작업 기록에 남김</td><td>A-07 · A-11</td><td><span class="stamp is-built">구현 B3·B4b</span></td></tr>
         <tr><td class="mono">F5-7</td><td>접근 기록</td><td>전문·원본·동의서·회원 정보·권리자 연락처·간이 계약 열람자와 시각</td><td>—</td><td><span class="stamp is-built">구현 B2·B3·B5</span></td></tr>
       </tbody></table></div></div>
   </section>
