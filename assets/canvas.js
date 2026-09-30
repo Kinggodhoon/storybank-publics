@@ -22,10 +22,10 @@
         ${swatch('accent', '#293986', '주요 동작·선택')}${swatch('accent-soft', '#E6ECFA', '선택 배경')}${swatch('mark', '#D3DFFF', '검색 근거 문장')}
         ${swatch('danger', '#AC3031', '오류·위험')}${swatch('caution', '#875814', '주의·대기')}${swatch('focus', '#3856C8', '키보드 포커스')}
       </div>
-      <h4>공개 화면 파스텔(적용 대기, DR2)</h4>
+      <h4>공개 화면 타일 컬러(적용 대기, DR2)</h4>
       <div class="cv-swatches">
-        ${swatch('tile-yellow', '#F6E8B3', '실화')}${swatch('tile-pink', '#FFD8E9', '꿈 이야기')}${swatch('tile-mint', '#C8F3E3', '단편 소설')}
-        ${swatch('tile-sky', '#CEE9FD', '안내')}${swatch('tile-lilac', '#E5DBFC', '마무리 카드')}
+        ${swatch('tile-yellow', '#F5ECD8', '실화')}${swatch('tile-pink', '#F7E6EC', '꿈 이야기')}${swatch('tile-mint', '#E0F1EC', '단편 소설')}
+        ${swatch('tile-sky', '#E1EDF8', '안내')}${swatch('tile-lilac', '#EAE7F7', '마무리 카드')}
       </div>` },
     { id: 'F-TYPE', name: '타이포그래피', kind: 'html', width: 1460, html: `
       <p class="cv-lead">제목과 본문은 Pretendard 하나로 쓰고, 코드와 번호만 IBM Plex Mono로 씁니다.</p>
