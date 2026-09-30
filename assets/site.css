@@ -36,11 +36,11 @@
   --info-soft: #dcecfa;
   --muted: #4c535f;
   --muted-soft: #e9edf2;
-  --tile-yellow: #f5ecd8;
-  --tile-pink: #f7e6ec;
-  --tile-mint: #e0f1ec;
-  --tile-sky: #e1edf8;
-  --tile-lilac: #eae7f7;
+  --tile-rose: #f5e1e0;
+  --tile-lavender: #e1dfff;
+  --tile-teal: #d6edeb;
+  --tile-mist: #f0edff;
+  --tile-stone: #e6e5ef;
   --canvas: #e4e9f1;
   --canvas-dot: #c7cfdb;
   --shadow-frame: 0 1px 2px rgba(17, 24, 37, 0.06), 0 18px 40px -18px rgba(17, 24, 37, 0.28);
@@ -192,12 +192,12 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
 .card h3 { font-size: 18px; }
 .card p { font-size: 14px; color: var(--ink-2); }
 .card .kicker { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
-.card.tinted-yellow { background: var(--tile-yellow); }
-.card.tinted-pink { background: var(--tile-pink); }
-.card.tinted-mint { background: var(--tile-mint); }
-.card.tinted-sky { background: var(--tile-sky); }
-.card.tinted-lilac { background: var(--tile-lilac); }
-.card.tinted-yellow p, .card.tinted-pink p, .card.tinted-mint p, .card.tinted-sky p, .card.tinted-lilac p { color: var(--ink); opacity: 0.8; }
+.card.tinted-rose { background: var(--tile-rose); }
+.card.tinted-lavender { background: var(--tile-lavender); }
+.card.tinted-teal { background: var(--tile-teal); }
+.card.tinted-mist { background: var(--tile-mist); }
+.card.tinted-stone { background: var(--tile-stone); }
+.card.tinted-rose p, .card.tinted-lavender p, .card.tinted-teal p, .card.tinted-mist p, .card.tinted-stone p { color: var(--ink); opacity: 0.8; }
 
 .rows { list-style: none; border-top: 1px solid var(--ink); }
 .rows li { display: grid; grid-template-columns: minmax(0, 72px) minmax(0, 200px) minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }

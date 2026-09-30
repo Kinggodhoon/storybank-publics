@@ -11,7 +11,7 @@
 
   const foundationBoards = [
     { id: 'F-COLOR', name: '컬러', kind: 'html', width: 1460, html: `
-      <p class="cv-lead">종이 톤 배경, 짙은 네이비 텍스트, 잉크 블루 포인트 컬러 하나. 기록과 권리를 다루는 서비스라 신뢰감을 먼저 생각했습니다.</p>
+      <p class="cv-lead">종이 톤 배경, 짙은 네이비 텍스트, 잉크 블루 포인트 컬러. 기록과 권리를 다루는 서비스이므로 신뢰감을 우선했습니다.</p>
       <h4>기본</h4>
       <div class="cv-swatches">
         ${swatch('paper', '#F4F7FB', '페이지 바탕')}${swatch('surface', '#FBFDFF', '카드·테이블')}${swatch('paper-sunken', '#E9EEF3', '입력란·보조 배경')}
@@ -22,13 +22,17 @@
         ${swatch('accent', '#293986', '주요 동작·선택')}${swatch('accent-soft', '#E6ECFA', '선택 배경')}${swatch('mark', '#D3DFFF', '검색 근거 문장')}
         ${swatch('danger', '#AC3031', '오류·위험')}${swatch('caution', '#875814', '주의·대기')}${swatch('focus', '#3856C8', '키보드 포커스')}
       </div>
+      <h4>포인트 컬러 추가 단계(태그·차트용)</h4>
+      <div class="cv-swatches">
+        ${swatch('accent-wash · 50', '#F0F4FE', '행 호버·태그 바탕')}${swatch('accent-muted · 400', '#6B85D2', '차트 보조 계열')}${swatch('accent-vivid · 600', '#3248A4', '진행 막대·차트 주 계열')}
+      </div>
       <h4>공개 화면 타일 컬러(적용 대기, DR2)</h4>
       <div class="cv-swatches">
-        ${swatch('tile-yellow', '#F5ECD8', '실화')}${swatch('tile-pink', '#F7E6EC', '꿈 이야기')}${swatch('tile-mint', '#E0F1EC', '단편 소설')}
-        ${swatch('tile-sky', '#E1EDF8', '안내')}${swatch('tile-lilac', '#EAE7F7', '마무리 카드')}
+        ${swatch('tile-rose', '#F5E1E0', '실화 카드, 검색·장바구니 띠')}${swatch('tile-lavender', '#E1DFFF', '꿈 이야기 카드, 마무리 카드')}${swatch('tile-teal', '#D6EDEB', '단편 소설 카드, AI 검색·서재 띠')}
+        ${swatch('tile-mist', '#F0EDFF', '에피소드·원고 상세 띠')}${swatch('tile-stone', '#E6E5EF', '로그인·회원가입·원고 등록 띠')}
       </div>` },
     { id: 'F-TYPE', name: '타이포그래피', kind: 'html', width: 1460, html: `
-      <p class="cv-lead">제목과 본문은 Pretendard 하나로 쓰고, 코드와 번호만 IBM Plex Mono로 씁니다.</p>
+      <p class="cv-lead">제목과 본문은 Pretendard, 코드와 번호는 IBM Plex Mono로 씁니다.</p>
       <div class="cv-type"><span>Display · 700 · 56</span><b style="font-size:56px;letter-spacing:-0.04em">이야기를 장면으로 만나요</b></div>
       <div class="cv-type"><span>Title · 700 · 31</span><b style="font-size:31px;letter-spacing:-0.03em">시장 골목 떡집의 마흔 해</b></div>
       <div class="cv-type"><span>Lead · 400 · 20</span><p style="font-size:20px">새벽 세 시에 불을 켜던 떡집이 골목과 함께 늙어 간 사십 년의 이야기예요.</p></div>

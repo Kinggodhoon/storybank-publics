@@ -21,11 +21,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
-  .ramp { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 110px), 1fr)); border-radius: 4px; overflow: hidden; border: 1px solid var(--outline); }
-  .ramp div { padding: 70px 12px 12px; display: grid; gap: 2px; font-size: 12px; }
+  .ramp { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); border-radius: 4px; overflow: hidden; border: 1px solid var(--outline); }
+  .ramp div { padding: 70px 12px 12px; display: grid; align-content: end; gap: 2px; font-size: 12px; }
   .ramp strong { font-size: 13px; }
   .ramp code { font-family: var(--font-mono); font-size: 11px; opacity: 0.85; }
+  .ramp.steps { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+  .ramp.steps div { padding-top: 48px; }
+  .ramp.steps strong { font-family: var(--font-mono); font-weight: 500; }
+  @media (max-width: 900px) {
+    .ramp { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ramp.steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .steps-table td:nth-child(-n+3) { font-family: var(--font-mono); font-size: 13px; white-space: nowrap; }
+  .steps-table .chip { margin-left: 6px; }
+  .tile-meta { margin-top: 10px; display: grid; gap: 2px; font-size: 13px; }
+  .tile-meta code { font-family: var(--font-mono); font-size: 12px; }
   .contrast td:first-child { width: 280px; }
+  .contrast td:not(:first-child), .contrast th:not(:first-child) { white-space: nowrap; }
+  @media (max-width: 900px) { .contrast td:first-child { width: auto; } }
   .sample { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; padding: 6px 12px; border-radius: 4px; font-weight: 700; font-size: 14px; }
 </style>
 </head>
@@ -43,15 +56,15 @@
   <section class="hero">
     <div>
       <p class="eyebrow">Color Foundations</p>
-      <h1>종이 톤 배경과<br>잉크 블루 하나</h1>
+      <h1>종이 톤 배경과<br>잉크 블루</h1>
     </div>
-    <p class="lead">배경은 푸른 기가 도는 종이 톤, 텍스트는 짙은 네이비, 포인트 컬러는 도장 잉크에서 가져온 잉크 블루 하나입니다. BI 컬러가 확정되면 포인트 컬러 계열만 바꾸고 나머지 토큰과 화면은 그대로 둡니다. 모든 텍스트·테두리 색 조합은 명도 대비 기준을 충족합니다.</p>
+    <p class="lead">배경은 푸른 기가 도는 종이 톤, 텍스트는 짙은 네이비, 포인트 컬러는 도장 잉크에서 가져온 잉크 블루이며 9단계로 관리합니다. BI 컬러가 확정되면 9단계 값을 바꾸고, 타일 컬러도 새 포인트 컬러 기준으로 다시 고릅니다. 모든 텍스트·테두리 색 조합은 명도 대비 기준을 충족합니다.</p>
   </section>
 
   <dl class="facts">
     <div class="fact"><dt>포인트 컬러</dt><dd class="mono" style="font-size:16px">#293986</dd></div>
     <div class="fact"><dt>본문 대비</dt><dd class="num">16.5 : 1 <small>본문 / 배경</small></dd></div>
-    <div class="fact"><dt>상태 컬러</dt><dd>위험 · 주의 · 포커스</dd></div>
+    <div class="fact"><dt>포인트 단계</dt><dd>50 – 800 · 9단계</dd></div>
     <div class="fact"><dt>정의 방식</dt><dd>OKLCH 토큰</dd></div>
   </dl>
 
@@ -72,15 +85,36 @@
   </section>
 
   <section class="sec" aria-labelledby="s2">
-    <div class="sec-label"><p class="eyebrow">02 / Accent</p><h2 id="s2">포인트 컬러</h2><p>주요 동작, 선택 상태, 검색 근거</p></div>
+    <div class="sec-label"><p class="eyebrow">02 / Accent</p><h2 id="s2">포인트 컬러</h2><p>9단계와 역할 이름</p></div>
     <div class="sec-body">
-      <div class="ramp" aria-label="포인트 컬러">
-        <div style="background:#e6ecfa;color:#111825"><strong>accent-soft</strong><code>#E6ECFA</code>선택 배경</div>
-        <div style="background:#d3dfff;color:#111825"><strong>mark</strong><code>#D3DFFF</code>검색 근거 문장</div>
-        <div style="background:#b1c3f3;color:#111825"><strong>inverse-accent</strong><code>#B1C3F3</code>다크 배경 위 강조</div>
-        <div style="background:#293986;color:#f4f7fb"><strong>accent</strong><code>#293986</code>주요 버튼·링크</div>
-        <div style="background:#1d2a6f;color:#f4f7fb"><strong>accent-strong</strong><code>#1D2A6F</code>누른 상태</div>
+      <div class="ramp steps" aria-label="포인트 컬러 9단계">
+        <div style="background:#f0f4fe;color:#111825"><strong>50</strong><code>#F0F4FE</code></div>
+        <div style="background:#e6ecfa;color:#111825"><strong>100</strong><code>#E6ECFA</code></div>
+        <div style="background:#d3dfff;color:#111825"><strong>200</strong><code>#D3DFFF</code></div>
+        <div style="background:#b1c3f3;color:#111825"><strong>300</strong><code>#B1C3F3</code></div>
+        <div style="background:#6b85d2;color:#111825"><strong>400</strong><code>#6B85D2</code></div>
+        <div style="background:#3856c8;color:#fbfdff"><strong>500</strong><code>#3856C8</code></div>
+        <div style="background:#3248a4;color:#fbfdff"><strong>600</strong><code>#3248A4</code></div>
+        <div style="background:#293986;color:#fbfdff"><strong>700</strong><code>#293986</code></div>
+        <div style="background:#1d2a6f;color:#fbfdff"><strong>800</strong><code>#1D2A6F</code></div>
       </div>
+      <div class="table-wrap">
+        <table class="steps-table">
+          <thead><tr><th>단계</th><th>토큰</th><th>값</th><th>용도</th></tr></thead>
+          <tbody>
+            <tr><td>50</td><td>accent-wash</td><td>#F0F4FE</td><td>표 행 호버, 태그 바탕<span class="chip">추가</span></td></tr>
+            <tr><td>100</td><td>accent-soft</td><td>#E6ECFA</td><td>선택 배경</td></tr>
+            <tr><td>200</td><td>mark</td><td>#D3DFFF</td><td>검색 근거 문장</td></tr>
+            <tr><td>300</td><td>inverse-accent</td><td>#B1C3F3</td><td>다크 배경 위 강조</td></tr>
+            <tr><td>400</td><td>accent-muted</td><td>#6B85D2</td><td>차트 보조 계열, 선택 안 된 단계 표시<span class="chip">추가</span></td></tr>
+            <tr><td>500</td><td>focus</td><td>#3856C8</td><td>키보드 포커스 링</td></tr>
+            <tr><td>600</td><td>accent-vivid</td><td>#3248A4</td><td>진행 막대, 차트 주 계열, 선택된 태그 테두리<span class="chip">추가</span></td></tr>
+            <tr><td>700</td><td>accent</td><td>#293986</td><td>주요 버튼, 링크, 선택 상태</td></tr>
+            <tr><td>800</td><td>accent-strong</td><td>#1D2A6F</td><td>주요 버튼 누른 상태</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">단계 번호는 기준표로만 쓰고, 화면 코드는 accent, accent-soft 같은 역할 이름을 씁니다. 단계 값이 바뀌어도 화면 코드는 그대로입니다. 50·400·600은 태그(B4)와 통계 차트(B6)용으로 추가했습니다.</p>
       <p class="note"><strong>한 영역에 주요 버튼은 하나.</strong> 포인트 컬러는 그 영역에서 가장 중요한 동작 하나와 현재 선택 상태에만 씁니다.</p>
     </div>
   </section>
@@ -108,16 +142,16 @@
   </section>
 
   <section class="sec" aria-labelledby="s4">
-    <div class="sec-label"><p class="eyebrow">04 / Public tiles</p><h2 id="s4">공개 화면 타일 컬러</h2><p>포인트 컬러와 어울리도록 채도를 낮춘 틴트</p></div>
+    <div class="sec-label"><p class="eyebrow">04 / Public tiles</p><h2 id="s4">공개 화면 타일 컬러</h2><p>포인트 컬러 #293986 기준 배색에서 선정</p></div>
     <div class="sec-body">
       <div class="grid">
-        <div class="card tinted-yellow"><h3>실화</h3><p>tile-yellow · #F5ECD8</p></div>
-        <div class="card tinted-pink"><h3>꿈 이야기</h3><p>tile-pink · #F7E6EC</p></div>
-        <div class="card tinted-mint"><h3>단편 소설</h3><p>tile-mint · #E0F1EC</p></div>
-        <div class="card tinted-sky"><h3>안내</h3><p>tile-sky · #E1EDF8</p></div>
-        <div class="card tinted-lilac"><h3>마무리 카드</h3><p>tile-lilac · #EAE7F7</p></div>
+        <div class="card tinted-rose"><h3>로즈</h3><div class="tile-meta"><code>tile-rose · #F5E1E0</code><span>실화 카드, 검색·장바구니 상단 띠</span></div></div>
+        <div class="card tinted-lavender"><h3>라벤더</h3><div class="tile-meta"><code>tile-lavender · #E1DFFF</code><span>꿈 이야기 카드, 마무리 카드, 멤버십·마이페이지·컬렉션 상단 띠</span></div></div>
+        <div class="card tinted-teal"><h3>틸</h3><div class="tile-meta"><code>tile-teal · #D6EDEB</code><span>단편 소설 카드, 멤버십 무료 카드, AI 검색·서재·주문 완료 상단 띠</span></div></div>
+        <div class="card tinted-mist"><h3>미스트</h3><div class="tile-meta"><code>tile-mist · #F0EDFF</code><span>에피소드 상세·원고 상세 상단 띠</span></div></div>
+        <div class="card tinted-stone"><h3>스톤</h3><div class="tile-meta"><code>tile-stone · #E6E5EF</code><span>로그인·회원가입·비밀번호 재설정·원고 등록 상단 띠</span></div></div>
       </div>
-      <p class="prose">타일 컬러는 공개 화면의 타일 배경용 토큰입니다. 잉크 블루와 부딪히지 않도록 채도를 낮춘 틴트로 정했고, 그 위 텍스트는 항상 본문 컬러입니다. 관리자 화면에는 쓰지 않습니다. 지금 구현에는 안내 박스에만 쓰고, 타일은 BI와 사진 사용이 정해지면 적용합니다(DR2).</p>
+      <p class="prose">포인트 컬러 #293986 기준 배색에서 다섯 색을 골랐습니다. 로즈와 스톤은 원래 색(#BFA5A4, #ABA9BB)을 타일 밝기로 올려 썼습니다. 노란 계열은 주의 알림과 겹치지 않도록 제외했습니다. 타일 위 텍스트는 본문과 보조 본문 컬러만 쓰고, 관리자 화면에는 타일을 쓰지 않습니다. 구현 화면 적용은 BI와 사진 사용이 정해진 뒤 진행합니다(DR2).</p>
     </div>
   </section>
 
@@ -135,6 +169,9 @@
             <tr><td>버튼 텍스트 / 포인트 컬러</td><td class="num">9.8 : 1</td><td>텍스트 4.5 : 1</td></tr>
             <tr><td>입력란 테두리 / 배경</td><td class="num">3.4 : 1</td><td>UI 요소 3 : 1</td></tr>
             <tr><td>포커스 / 배경</td><td class="num">5.9 : 1</td><td>UI 요소 3 : 1</td></tr>
+            <tr><td>차트 보조 계열(accent-muted) / 배경</td><td class="num">3.3 : 1</td><td>그래픽 3 : 1</td></tr>
+            <tr><td>본문 / 타일 5종</td><td class="num">13.6 : 1 이상</td><td>텍스트 4.5 : 1</td></tr>
+            <tr><td>보조 본문 / 타일 5종</td><td class="num">5.9 : 1 이상</td><td>텍스트 4.5 : 1</td></tr>
           </tbody>
         </table>
       </div>

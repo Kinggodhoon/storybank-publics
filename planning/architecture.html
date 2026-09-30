@@ -82,7 +82,7 @@
     <div class="sec-body">
       <ul class="rows">
         <li><span class="n">BOUNDARY</span><strong>DB 중심의 권한 경계</strong><span>모든 테이블에 RLS(행 수준 보안) 적용. 업무 규칙이 걸린 쓰기는 호출자 권한을 먼저 확인하는 DB 함수로만 처리.</span></li>
-        <li><span class="n">WRITES</span><strong>쓰기 경로는 세 가지</strong><span>본인 정보의 단순 쓰기, 규칙이 있는 DB 함수, 시스템 작업으로 구분. 코드에서 경로가 바로 드러나는 구조.</span></li>
+        <li><span class="n">WRITES</span><strong>쓰기 경로는 세 가지</strong><span>본인 정보의 단순 쓰기, 규칙이 있는 DB 함수, 시스템 작업으로 구분. 호출 코드만으로 어느 경로인지 확인 가능.</span></li>
         <li><span class="n">HISTORY</span><strong>기록 불변 원칙</strong><span>에피소드 버전, 권리 기록, 이용 기록, 감사 로그는 추가만 허용. 주문에는 주문 시점 조건을 복사해 보관.</span></li>
         <li><span class="n">CATALOG</span><strong>공개 목록 자동 갱신</strong><span>승인·권리·동의 변경 시 같은 트랜잭션에서 공개 목록 재생성. 같은 원고의 동시 변경은 순서대로 처리.</span></li>
         <li><span class="n">SETTINGS</span><strong>설정 기반 운영 규칙</strong><span>가격, 배분율, 한도, 동의 문서 버전을 설정값으로 관리. 정책이 바뀌어도 데이터베이스 구조 변경 불필요.</span></li>
@@ -109,7 +109,7 @@
     <div class="sec-body">
       <div class="grid two">
         <div class="card"><span class="kicker">Cache</span><h3>공개 목록만 캐시</h3><p>모든 사용자에게 같은 공개 목록만 캐시. 관리자 수정 시 즉시 캐시 삭제. 동의서 기한이 날짜 단위라 캐시는 한국 시간 자정을 넘기지 않음.</p></div>
-        <div class="card"><span class="kicker">Capacity</span><h3>무료 플랜으로 시작</h3><p>Supabase 무료 플랜(DB 500MB·저장소 1GB)에서 원고 90편 수용, 용량 부족 시 유료 플랜 전환. 무료 플랜은 7일 미사용 시 일시정지. 상업 이용이라 Vercel Pro 필요, AI 사용량 비용 별도.</p></div>
+        <div class="card"><span class="kicker">Capacity</span><h3>무료 플랜으로 시작</h3><p>Supabase 무료 플랜(DB 500MB·저장소 1GB)에서 원고 90편 수용, 용량 부족 시 유료 플랜 전환. 무료 플랜은 7일 미사용 시 일시정지. 상업 이용에는 Vercel Pro 필요, AI 사용량 비용 별도.</p></div>
         <div class="card"><span class="kicker">Region</span><h3>서울 리전</h3><p>Supabase 서울 리전. 운영 데이터베이스 구조와 검증 환경의 일치 확인(9.30).</p></div>
         <div class="card"><span class="kicker">i18n</span><h3>한국어·영어</h3><p>공개 화면은 같은 구조의 영어 화면 제공. 원고와 요약은 번역하지 않음.</p></div>
       </div>
