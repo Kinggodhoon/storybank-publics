@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:type" content="website">
+<meta property="og:title" content="서비스 정책서 · 스토리뱅크">
+<meta property="og:description" content="스토리뱅크 서비스 기획안과 디자인 시안: 기획서, 서비스 구조, 기능 정의, 일정, 디자인 캔버스, 화면 시안, 디자인 시스템">
+<meta property="og:url" content="https://kinggodhoon.github.io/storybank-publics/planning/policy.html">
+<meta property="og:image" content="https://kinggodhoon.github.io/storybank-publics/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#293986">
+<title>서비스 정책서 · 스토리뱅크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); font-size: 13px; }
+  .toc a { color: var(--ink-2); text-decoration: none; white-space: nowrap; }
+  .toc a:hover { color: var(--accent); }
+  .toc a span { font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-right: 6px; }
+  .states td:first-child { white-space: nowrap; font-weight: 700; }
+  .states td:nth-child(2) { white-space: nowrap; }
+  @media (max-width: 760px) { .states td:nth-child(2) { white-space: normal; } }
+</style>
+</head>
+<body data-root="../">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="brand-mark">S</span>스토리뱅크 기획안</a>
+    <a class="back-link" href="./">← 목록으로</a>
+    <span class="spacer"></span>
+    <span class="tag mono">SB-PLAN-05</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Service Policy</p>
+      <h1>서비스<br>정책서</h1>
+    </div>
+    <p class="lead">회원, 원고, 에피소드, 권리·동의, 거래, 정산, 운영에 적용하는 규칙과 상태 정의입니다. 서비스 전체 기준의 규칙이며, 기능별 적용 시점은 <a href="features.html">기능 정의</a> 문서에 정리했습니다. 결정 대기 항목(U번호)은 결정 전까지 기본안으로 운영합니다.</p>
+  </section>
+
+  <dl class="facts">
+    <div class="fact"><dt>회원 등급</dt><dd>무료 · 유료 · 관리자</dd></div>
+    <div class="fact"><dt>원고 상태</dt><dd class="num">6종</dd></div>
+    <div class="fact"><dt>판매 상태</dt><dd class="num">6종 <small>자동 4 · 관리자 지정 2</small></dd></div>
+    <div class="fact"><dt>거래 기록 보관</dt><dd class="num">5년 <small>전자상거래법</small></dd></div>
+  </dl>
+
+  <nav class="toc" aria-label="문서 목차">
+    <a href="#s1"><span>01</span>회원</a><a href="#s2"><span>02</span>원고</a><a href="#s3"><span>03</span>에피소드</a><a href="#s4"><span>04</span>권리·동의</a><a href="#s5"><span>05</span>공개·판매 판정</a><a href="#s6"><span>06</span>주문·열람</a><a href="#s7"><span>07</span>정산·지급</a><a href="#s8"><span>08</span>운영·보안</a>
+  </nav>
+
+  <section class="sec" aria-labelledby="s1">
+    <div class="sec-label"><p class="eyebrow">01 / Members</p><h2 id="s1">회원 정책</h2><p>가입 · 등급 · 전환 · 탈퇴</p></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">MB-1</span><strong>가입</strong><span>이메일·비밀번호·표시 이름으로 가입. 비밀번호는 10자 이상, 영문과 숫자 포함. 인증 메일 확인 후 로그인 가능.</span></li>
+        <li><span class="n">MB-2</span><strong>필수 동의</strong><span>이용약관, 개인정보 수집·이용, 만 14세 이상 확인. 화면에 보인 약관 버전을 동의 시각과 함께 기록.</span></li>
+        <li><span class="n">MB-3</span><strong>약관 개정</strong><span>필수 약관 버전이 바뀌면 재동의 전까지 원고 올리기·주문 등 쓰기 기능과 전문 열람 제한. 계정 메뉴와 마이페이지에서 재동의 안내.</span></li>
+        <li><span class="n">MB-4</span><strong>비밀번호 재설정</strong><span>계정 유무와 관계없이 같은 안내 문구. 메일 링크의 확인 화면을 거친 세션에서만 새 비밀번호 저장, 변경 알림 메일 발송.</span></li>
+      </ul>
+      <h3>등급과 권한</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>등급</th><th>볼 수 있는 것</th><th>할 수 있는 것</th></tr></thead>
+          <tbody>
+            <tr><td>방문자</td><td>공개 목록(제목·승인 요약·공개 발췌·판매 상태)</td><td>탐색·검색</td></tr>
+            <tr><td>무료 회원</td><td>방문자와 같음, 내가 올린 원고의 진행 단계</td><td>원고 올리기, 유료 전환 신청</td></tr>
+            <tr><td>유료 회원</td><td>공개 목록 에피소드의 전문</td><td>장바구니·주문, 내 서재</td></tr>
+            <tr><td>관리자</td><td>관리자 화면 전체(본문·파일·회원 정보는 열람 기록)</td><td>원고·권리·상품·주문·정산·회원 관리</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>유료 전환과 계정 상태</h3>
+      <div class="table-wrap">
+        <table class="states">
+          <thead><tr><th>구분</th><th>상태</th><th>규칙</th></tr></thead>
+          <tbody>
+            <tr><td>유료 전환</td><td>대기 → 승인 · 반려 · 취소</td><td>무료 회원이 신청하고 관리자가 승인(U4 결정 전 기본안). 한 회원에 대기 신청은 하나. 관리자가 등급을 직접 바꾸면 대기 신청은 취소 처리.</td></tr>
+            <tr><td>비활성</td><td>활성 ↔ 비활성</td><td>비활성 시 로그인 차단, 모든 세션 종료, 대기 중인 전환 신청 취소. 마이페이지·내 서재 이용 불가.</td></tr>
+            <tr><td>탈퇴</td><td>활성 → 탈퇴</td><td>최근 로그인(10분 이내) 필요. 이메일·표시 이름을 즉시 가림 처리하고, 접수 대기 원고 철회·결제 대기 주문 취소·장바구니 비움. 이미 공개된 원고는 판매 유지(동의 철회 절차는 결정 필요).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>개인정보 보관과 파기</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>정보</th><th>보관 기간</th><th>파기 방식</th></tr></thead>
+          <tbody>
+            <tr><td>회원 식별 정보(이메일·표시 이름)</td><td>탈퇴 또는 삭제 요구 시까지</td><td>탈퇴 즉시 가림 처리</td></tr>
+            <tr><td>동의 기록</td><td>회원 정보와 같은 기간</td><td>탈퇴 후 가린 식별자로 보관</td></tr>
+            <tr><td>관리자 열람 기록 · 감사 로그</td><td>1년 이상</td><td>기간 경과분만 정리 작업으로 삭제, 그 전에는 수정·삭제 불가</td></tr>
+            <tr><td>저작권자 이름 · 동의서</td><td>정산 근거가 있으면 거래 기록과 함께 5년</td><td>정산 내역이 없는 본인 저작 권리자 이름은 탈퇴 시 가림 처리</td></tr>
+            <tr><td>거래 기록(주문·이용 기록·정산)</td><td>5년(전자상거래법)</td><td>삭제하지 않고 보관</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s2">
+    <div class="sec-label"><p class="eyebrow">02 / Manuscripts</p><h2 id="s2">원고 정책</h2><p>등록 경로 · 파일 · 상태</p></div>
+    <div class="sec-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>구분</th><th>관리자 등록</th><th>회원 업로드</th></tr></thead>
+          <tbody>
+            <tr><td>대상</td><td>발주자 보유 원고</td><td>회원이 직접 쓰거나 위임받은 원고</td></tr>
+            <tr><td>권리 증빙</td><td>동의서 파일(스캔 이미지 가능)</td><td>업로드 시 책임 고지 동의(계약서 받지 않음)</td></tr>
+            <tr><td>시작 상태</td><td>처리 중</td><td>접수 대기(관리자 검수 후 접수)</td></tr>
+            <tr><td>외부 AI 처리</td><td>동의서 범위에 포함된 경우(동의서가 없으면 관리자 판정)</td><td>업로드 시 선택 동의한 경우</td></tr>
+            <tr><td>분할 방식</td><td colspan="2">AI가 제안한 경계를 관리자가 검수·확정. 외부 AI 미동의 원고는 관리자가 직접 분할</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="rows">
+        <li><span class="n">MS-1</span><strong>파일 형식</strong><span>원고 DOCX·PDF(텍스트 PDF) 20MB, TXT 10MB까지. 동의서 PDF·JPG·PNG 10MB까지. HWP·스캔 이미지(OCR)·녹음(STT)은 제외(U10).</span></li>
+        <li><span class="n">MS-2</span><strong>업로드 한도</strong><span>회원은 접수 대기 원고 3편, 하루 업로드 5회까지. 전체 저장 용량이 기준을 넘으면 새 업로드 중단.</span></li>
+        <li><span class="n">MS-3</span><strong>중복 확인</strong><span>관리자 등록 시 파일 해시·파일 이름·본문 해시로 중복 경고. "그래도 등록"을 선택해야 등록.</span></li>
+        <li><span class="n">MS-4</span><strong>본문 추출</strong><span>업로드 즉시 본문과 장·절·문단·쪽 구조, 문장 시작 위치 추출. 원본 파일과 추출 본문은 비공개 저장.</span></li>
+      </ul>
+      <h3>원고 상태</h3>
+      <div class="table-wrap">
+        <table class="states">
+          <thead><tr><th>상태</th><th>마이페이지 표시</th><th>다음 상태와 조건</th></tr></thead>
+          <tbody>
+            <tr><td>접수 대기</td><td>접수</td><td>관리자 접수 → 처리 중, 반려(사유 필수) → 반려, 회원 접수 취소 → 취소</td></tr>
+            <tr><td>처리 중</td><td>장면 나누기</td><td>첫 에피소드 생성 → 검수 중</td></tr>
+            <tr><td>검수 중</td><td>사람 검수</td><td>첫 에피소드 버전 승인 → 공개</td></tr>
+            <tr><td>공개</td><td>서가 공개</td><td>공개 목록에 오른 경우에만 "서가 공개". 권리 확인 전이면 "승인됨 · 공개 준비 중"</td></tr>
+            <tr><td>반려</td><td>반려 사유</td><td>종료. 사유를 회원 마이페이지에 표시</td></tr>
+            <tr><td>취소</td><td>—</td><td>종료. 탈퇴 시 접수 대기 원고도 취소</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s3">
+    <div class="sec-label"><p class="eyebrow">03 / Episodes</p><h2 id="s3">에피소드 정책</h2><p>분할 · 버전 · 요약과 발췌</p></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">EP-1</span><strong>분할 기준</strong><span>원고 본문의 시작·끝 문단 번호로 에피소드 범위 확정. 다른 에피소드의 승인 범위나 검토 중인 범위와 겹치면 거절.</span></li>
+        <li><span class="n">EP-2</span><strong>버전</strong><span>수정·범위 조정은 새 버전으로 추가. 승인된 버전은 한 번에 하나이며, 새 버전 승인 시 이전 승인 버전은 대체됨. 반려 시 승인 버전 유지.</span></li>
+        <li><span class="n">EP-3</span><strong>승인 요약</strong><span>관리자가 승인한 요약만 공개(U6 기본안). AI가 만든 요약도 관리자 검수 전에는 확정하지 않음.</span></li>
+        <li><span class="n">EP-4</span><strong>공개 발췌</strong><span>그 에피소드 원문에 그대로 있는 문장만 허용(저장 시 일치 확인). 발췌 공개 동의가 있을 때만 게시.</span></li>
+        <li><span class="n">EP-5</span><strong>실명 금지</strong><span>요약·발췌·원고 소개에 사람 이름 사용 금지(작성 기준, 관리자 화면 안내). 익명화가 필요한 원고는 가림 처리 전까지 공개 목록 제외.</span></li>
+        <li><span class="n">EP-6</span><strong>제외</strong><span>관리자가 사유를 남기고 에피소드를 제외하면 공개 목록과 판매에서 빠짐.</span></li>
+      </ul>
+      <h3>분류와 태그</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>분류</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td>이야기 종류</td><td>실화 · 꿈 이야기 · 단편 소설</td></tr>
+            <tr><td>서사 태그</td><td>시간 · 장소 · 인물 · 감정 4개 축(U9). 축은 데이터로 추가 가능</td></tr>
+            <tr><td>장면 키워드</td><td>에피소드당 후보 3~5개 중 대표 1개</td></tr>
+            <tr><td>상세 태그</td><td>검색용 일상어 태그 5~8개</td></tr>
+            <tr><td>공개 주제</td><td>가족 · 사랑 · 우정 · 성장 · 일과 직업 · 여행 · 음식 · 동네</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s4">
+    <div class="sec-label"><p class="eyebrow">04 / Rights</p><h2 id="s4">권리·동의 정책</h2><p>권리 기록 · 동의서 · 동의 범위</p></div>
+    <div class="sec-body">
+      <h3>권리 기록 항목</h3>
+      <p>관리자가 원고마다 기록하고, 저장할 때마다 새 버전으로 추가. 가장 최근 버전이 현재 권리.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>항목</th><th>뜻</th><th>판정에 쓰는 곳</th></tr></thead>
+          <tbody>
+            <tr><td>출판권 확인</td><td>출판권 보유(레페토) 확인 여부</td><td>미확인 시 등재 대기</td></tr>
+            <tr><td>외부 공개 허용</td><td>요약·발췌를 공개 목록에 올릴 수 있는지</td><td>불허 시 공개 목록 제외</td></tr>
+            <tr><td>익명화 필요</td><td>이름 가림이 필요한 원고인지(회원의 가림 요청이 기본값)</td><td>필요 시 가림 처리 전까지 공개 목록 제외</td></tr>
+            <tr><td>2차 활용 허용</td><td>영상·웹툰 등 2차 창작 활용 허용 여부</td><td>판매 판정에는 쓰지 않음. 상업적 활용 라이선스(U2) 판단 근거</td></tr>
+            <tr><td>외부 AI 허용</td><td>외부 AI 처리(분할·임베딩) 허용 여부. 회원 업로드는 외부 AI 처리 동의, 관리자 등록은 연결 동의서의 범위(동의서가 없으면 관리자 판정)</td><td>AI 처리 작업 등록 조건</td></tr>
+            <tr><td>허용 용도 · 제한 문구</td><td>허용하는 활용 유형과 이용 제한 내용</td><td>제한이 있으면 조건부 판매, 제한 내용 표시</td></tr>
+            <tr><td>연결 동의서</td><td>이 권리 판정의 증빙 파일</td><td>동의 범위·보관 기한 판정</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>동의 범위</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>범위</th><th>없을 때</th><th>관리자 등록 증빙</th><th>회원 업로드 증빙</th></tr></thead>
+          <tbody>
+            <tr><td>요약 공개</td><td>공개 목록에 오르지 않음</td><td rowspan="3">확인된 동의서의 범위, 보관 기한 안</td><td rowspan="3">업로드 시 책임 고지 동의</td></tr>
+            <tr><td>발췌 공개</td><td>공개 발췌 없이 게시</td></tr>
+            <tr><td>회차 판매</td><td>판매 차단(동의 없음)</td></tr>
+            <tr><td>외부 AI 처리</td><td>관리자가 직접 분할</td><td>동의서 범위</td><td>업로드 시 선택 동의</td></tr>
+            <tr><td>2차 창작</td><td>판매 판정과 무관</td><td>동의서 범위</td><td>—(U2와 함께 결정)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="rows">
+        <li><span class="n">RT-1</span><strong>동의서 확인</strong><span>관리자가 내용을 확인한 뒤 확인 처리(파일 열람은 기록됨). 확인 전 동의서는 판정에 쓰지 않음.</span></li>
+        <li><span class="n">RT-2</span><strong>보관 기한</strong><span>보관 기한(한국 날짜)이 지난 동의서는 증빙에서 제외. 요약 공개 범위가 사라지면 공개 목록에서 내리고(등재 대기), 회차 판매 범위만 사라지면 판매 차단.</span></li>
+        <li><span class="n">RT-3</span><strong>간이 계약</strong><span>"저작권은 작가, 출판권은 레페토" 조건의 계약을 시스템에서 생성·보관(계약 주체 명칭 확인 필요). 전자서명은 쓰지 않음.</span></li>
+        <li><span class="n">RT-4</span><strong>승인 게이트</strong><span>원문 일치 → 민감정보·제3자 → 권리자 공개 승인의 3단계 검수. 3단계를 모두 통과해야 판매 가능(권리자 승인 주체는 U6).</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s5">
+    <div class="sec-label"><p class="eyebrow">05 / Listing</p><h2 id="s5">공개·판매 판정</h2><p>변경 즉시 자동 재계산</p></div>
+    <div class="sec-body">
+      <h3>공개 목록에 오르는 조건</h3>
+      <ul class="rows">
+        <li><span class="n">LS-1</span><strong>승인</strong><span>승인된 버전이 있고, 에피소드가 제외되지 않았으며, 원고가 반려·취소 상태가 아님.</span></li>
+        <li><span class="n">LS-2</span><strong>외부 공개</strong><span>현재 권리 기록이 있고 외부 공개가 허용됨.</span></li>
+        <li><span class="n">LS-3</span><strong>익명화</strong><span>익명화가 필요한 원고는 가림 처리를 통과해야 함.</span></li>
+        <li><span class="n">LS-4</span><strong>요약 공개 동의</strong><span>요약 공개 범위의 증빙이 있음(동의서 또는 업로드 동의).</span></li>
+        <li><span class="n">LS-5</span><strong>승인 게이트</strong><span>원문 일치·민감정보·권리자 공개 승인 3단계를 통과함(RT-4).</span></li>
+      </ul>
+      <h3>판매 상태 판정 순서</h3>
+      <p>위에서부터 먼저 맞는 상태로 결정. 원고·에피소드·상품·권리·동의서·업로드 동의가 바뀌면 해당 원고의 판정과 공개 목록을 즉시 다시 계산.</p>
+      <div class="table-wrap">
+        <table class="states">
+          <thead><tr><th>판매 상태</th><th>공개 화면 표시</th><th>조건</th></tr></thead>
+          <tbody>
+            <tr><td>판매 안 함</td><td>지금은 구매할 수 없어요</td><td>관리자가 판매 안 함으로 지정</td></tr>
+            <tr><td>판매 중지</td><td>지금은 구매할 수 없어요</td><td>관리자가 판매 중지(재개 가능)</td></tr>
+            <tr><td>등재 대기</td><td>목록에 없음 또는 구매 불가</td><td>공개 목록 조건 미충족 또는 출판권 미확인</td></tr>
+            <tr><td>판매 차단(동의 없음)</td><td>지금은 구매할 수 없어요</td><td>공개 목록 조건은 충족하지만 회차 판매 범위의 증빙이 없음</td></tr>
+            <tr><td>조건부 판매</td><td>조건부 판매 배지 + 제한 내용(구매 가능)</td><td>권리 기록에 이용 제한이 있음</td></tr>
+            <tr><td>판매 중</td><td>구매 가능</td><td>그 밖의 모든 경우</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note"><strong>검증.</strong> 판정 조건표의 모든 경우를 데이터베이스 테스트로 확인. 공개 목록이 원천 데이터에서 다시 계산한 결과와 같은지도 테스트로 검사.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s6">
+    <div class="sec-label"><p class="eyebrow">06 / Orders</p><h2 id="s6">주문·열람 정책</h2><p>장바구니 · 주문 · 취소 · 전문 열람</p></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">OD-1</span><strong>장바구니</strong><span>유료 회원만 이용. 한 번에 50개, 장바구니 전체 100개까지. 구매 가능한 회차만 담기.</span></li>
+        <li><span class="n">OD-2</span><strong>주문</strong><span>장바구니에서 지금 구매할 수 있는 회차를 한 주문으로 생성(구매할 수 없는 회차는 표시 후 제외). 이미 구매했거나 결제 대기 중인 회차는 거절. 주문 시점의 가격·제목과 구매한 버전을 보관.</span></li>
+        <li><span class="n">OD-3</span><strong>중복 주문 방지</strong><span>같은 제출을 여러 번 보내도 주문은 하나. 결제 확인 대기 주문은 회원당 5개까지.</span></li>
+        <li><span class="n">OD-4</span><strong>주문 번호</strong><span>SB-YYMMDD-NNNN 형식, 날짜별 일련번호.</span></li>
+        <li><span class="n">OD-5</span><strong>결제 확인</strong><span>관리자가 입금 확인 후 처리(U1 결정 전 기본안). 확인 시 회차별 판매 가능 여부를 다시 확인하고, 판매할 수 없는 회차가 있으면 확인을 거절하고 관리자가 주문 취소.</span></li>
+        <li><span class="n">OD-6</span><strong>취소</strong><span>결제 확인 전에만 가능. 구매자는 자기 주문, 관리자는 모든 대기 주문(사유 기록). 결제 완료 후 환불은 이번 범위 밖.</span></li>
+        <li><span class="n">OD-7</span><strong>이용 범위</strong><span>전문 열람과 비상업 참고. 상업적 활용은 건별 협의(U2).</span></li>
+      </ul>
+      <h3>주문 상태</h3>
+      <div class="table-wrap">
+        <table class="states">
+          <thead><tr><th>상태</th><th>내 서재 표시</th><th>다음 상태</th></tr></thead>
+          <tbody>
+            <tr><td>결제 확인 대기</td><td>결제 확인 대기</td><td>관리자 결제 확인 → 결제 완료, 구매자·관리자 취소 → 취소</td></tr>
+            <tr><td>결제 완료</td><td>읽을 수 있음</td><td>종료. 이용 기록·정산 내역 생성</td></tr>
+            <tr><td>취소</td><td>—</td><td>종료. 탈퇴 시 결제 대기 주문 자동 취소</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>전문 열람 권한</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>대상</th><th>조건</th><th>읽는 버전</th></tr></thead>
+          <tbody>
+            <tr><td>구매자</td><td>결제 완료 주문이 있음(공개 목록에서 내려가도 유지)</td><td>구매한 버전</td></tr>
+            <tr><td>유료 회원</td><td>공개 목록에 있고 구매 불가 상태가 아님</td><td>공개 목록의 버전</td></tr>
+            <tr><td>관리자</td><td>항상</td><td>요청한 버전</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note"><strong>열람 기록.</strong> 모든 전문 열람은 열람자와 시각을 기록. 원고 철회·동의 철회·동의서 파기 시 해당 에피소드는 게시 중단(관리자 외 열람 차단).</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s7">
+    <div class="sec-label"><p class="eyebrow">07 / Settlement</p><h2 id="s7">정산·지급 정책</h2></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">ST-1</span><strong>배분</strong><span>저작권자 몫 = 회차 판매 금액 × 배분율(기본 70%, 설정값, U16)을 원 단위 내림. 나머지는 플랫폼 몫.</span></li>
+        <li><span class="n">ST-2</span><strong>생성 시점</strong><span>결제 확인과 같은 처리에서 회차마다 이용 기록(UE-…)과 정산 내역 생성. 배분율은 이때의 값을 복사해 이후 설정이 바뀌어도 유지.</span></li>
+        <li><span class="n">ST-3</span><strong>지급 기록</strong><span>관리자가 저작권자의 미지급 정산 내역을 묶어 지급일·방법 메모와 함께 기록. 같은 내역은 한 번만 지급 처리.</span></li>
+        <li><span class="n">ST-4</span><strong>송금</strong><span>실제 송금은 시스템 밖에서 처리하고 지급 사실만 기록. 자동 송금은 이번 범위 밖.</span></li>
+      </ul>
+      <p class="note"><strong>예시.</strong> 25,000원 회차 1건 결제 확인 → 저작권자 몫 17,500원, 플랫폼 몫 7,500원의 정산 내역 생성.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="s8">
+    <div class="sec-label"><p class="eyebrow">08 / Operations</p><h2 id="s8">운영·보안 정책</h2><p>관리자 권한 · 기록 · 파일</p></div>
+    <div class="sec-body">
+      <ul class="rows">
+        <li><span class="n">OP-1</span><strong>관리자 접근</strong><span>관리자 등급 계정만 관리자 화면 접근. 그 밖의 계정은 404 표시. 관리자도 회원과 같은 로그인 화면 사용.</span></li>
+        <li><span class="n">OP-2</span><strong>관리자 보호</strong><span>자기 계정의 등급·상태 변경 불가. 마지막 활성 관리자는 강등·비활성·탈퇴 불가.</span></li>
+        <li><span class="n">OP-3</span><strong>최근 로그인 확인</strong><span>탈퇴, 관리자 등급 부여, 관리자 계정 재활성화, 비밀번호 저장은 10분 이내 로그인한 세션에서만 가능.</span></li>
+        <li><span class="n">OP-4</span><strong>열람 기록</strong><span>전문, 원고 본문, 원본 파일, 동의서, 회원 정보 열람 시 열람자·시각·대상 기록.</span></li>
+        <li><span class="n">OP-5</span><strong>파일 제공</strong><span>원본·동의서는 열람 기록을 남긴 뒤 60초 유효 링크로만 제공. 등록 후 바뀐 파일은 열지 않고 알림.</span></li>
+        <li><span class="n">OP-6</span><strong>감사 로그</strong><span>등급·상태·승인·권리·가격·주문·지급 변경을 수정·삭제할 수 없는 기록으로 저장. 관리자 화면에서 조회.</span></li>
+      </ul>
+      <p class="note"><strong>정식 공개 전 추가 조건.</strong> 보안 강화 조치, 외부 메일 발송(SMTP), 약관·개인정보 처리방침 법무 검토.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap"><span>서비스 정책서</span><span class="mono">SB-PLAN-05 · 2026.09.30</span></div>
+</footer>
+</body>
+</html>
