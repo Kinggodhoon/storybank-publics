@@ -51,19 +51,19 @@
 
   <dl class="facts">
     <div class="fact"><dt>기능</dt><dd class="num">45개</dd></div>
-    <div class="fact"><dt>구현</dt><dd class="num">21개 <small>B1–B3·B5</small></dd></div>
-    <div class="fact"><dt>일부 구현</dt><dd class="num">11개</dd></div>
-    <div class="fact"><dt>예정</dt><dd class="num">13개 <small>B4·B6</small></dd></div>
+    <div class="fact"><dt>구현</dt><dd class="num">27개 <small>B1–B3·B5·B4a·B6a</small></dd></div>
+    <div class="fact"><dt>일부 구현</dt><dd class="num">10개</dd></div>
+    <div class="fact"><dt>예정</dt><dd class="num">8개 <small>B4·B6</small></dd></div>
   </dl>
 
   <section class="sec" aria-labelledby="s0">
     <div class="sec-label"><p class="eyebrow">Overview</p><h2 id="s0">진행 현황</h2></div>
     <div class="sec-body">
-      <div class="meter" role="img" aria-label="45개 중 구현 21, 일부 11, 예정 13">
-        <i style="width:46.7%;background:var(--positive)"></i><i style="width:24.4%;background:var(--info)"></i><i style="width:28.9%;background:var(--rule-strong)"></i>
+      <div class="meter" role="img" aria-label="45개 중 구현 27, 일부 10, 예정 8">
+        <i style="width:60%;background:var(--positive)"></i><i style="width:22.2%;background:var(--info)"></i><i style="width:17.8%;background:var(--rule-strong)"></i>
       </div>
-      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 21</span><span><span class="stamp is-partial">일부</span> 11</span><span><span class="stamp is-next">예정</span> 13</span></div>
-      <p class="prose">원고 등록부터 공개 검수, 서재·정산까지 전체 흐름 동작. 권리 심화(B5) 완료. 남은 기능은 AI 처리(B4), 운영·증빙(B6) 단계에서 추가.</p>
+      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 27</span><span><span class="stamp is-partial">일부</span> 10</span><span><span class="stamp is-next">예정</span> 8</span></div>
+      <p class="prose">원고 등록부터 공개 검수, 서재·정산까지 전체 흐름 동작. 권리 심화(B5), 태그·키워드와 태그 조건 탐색(B4a), 감사 로그 화면·내보내기(B6a) 완료. 남은 기능은 AI 처리(B4), 운영·증빙(B6) 단계에서 추가.</p>
     </div>
   </section>
 
@@ -102,11 +102,11 @@
     <div class="sec-body"><div class="table-wrap"><table class="feature-table">
       <thead><tr><th>번호</th><th>기능</th><th>완료 기준</th><th>화면</th><th>상태</th></tr></thead>
       <tbody>
-        <tr><td class="mono">F3-1</td><td>서사 태그</td><td>시간·장소·인물·감정, AI 제안 → 관리자 확정</td><td>A-13 · A-19</td><td><span class="stamp is-next">예정 B4</span></td></tr>
-        <tr><td class="mono">F3-2</td><td>장면 키워드</td><td>에피소드당 후보 3~5개, 대표 1개 선택, 키워드 유형</td><td>A-19</td><td><span class="stamp is-next">예정 B4</span></td></tr>
-        <tr><td class="mono">F3-3</td><td>상세 태그</td><td>검색용 일상어 태그 5~8개</td><td>A-13</td><td><span class="stamp is-next">예정 B4</span></td></tr>
-        <tr><td class="mono">F3-4</td><td>공개 주제 분류</td><td>이야기 종류(실화·꿈 이야기·단편 소설)는 구현. 주제 매핑은 태그 기능과 함께 B4에서 구현</td><td>P-01 · P-02</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F3-5</td><td>식별자 매핑</td><td>키워드 ↔ 에피소드 ↔ 저작권자 ↔ 정산 식별자</td><td>—</td><td><span class="stamp is-next">예정 B4</span></td></tr>
+        <tr><td class="mono">F3-1</td><td>서사 태그</td><td>시간·장소·인물·감정 축(인물은 공개 안 함), 관리자가 버전마다 붙이고 새 버전이 이어받음은 구현. AI 제안 → 관리자 확정은 B4</td><td>A-13 · A-19</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F3-2</td><td>장면 키워드</td><td>에피소드 버전마다 1~5개, 대표 1개, 키워드 유형은 구현(대표는 카드에 #키워드). AI 후보와 핵심 장면 점수는 B4</td><td>A-13 · A-19</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F3-3</td><td>상세 태그</td><td>검색용 일상어 태그(축마다 10개까지), 카드·상세에 보이고 검색어로 찾음</td><td>A-13</td><td><span class="stamp is-built">구현 B4a</span></td></tr>
+        <tr><td class="mono">F3-4</td><td>공개 주제 분류</td><td>이야기 종류(실화·꿈 이야기·단편 소설)와 주제 8개(가족·사랑·우정·성장·일과 직업·여행·음식·동네), 첫 화면 주제 타일과 탐색 조건</td><td>P-01 · P-02</td><td><span class="stamp is-built">구현 B3·B4a</span></td></tr>
+        <tr><td class="mono">F3-5</td><td>식별자 매핑</td><td>주문 항목·이용 기록에 구매 시점의 대표 키워드를 남겨 키워드 ↔ 에피소드 ↔ 저작권자 ↔ 정산 식별자가 이어짐</td><td>A-23 · A-24</td><td><span class="stamp is-built">구현 B4a</span></td></tr>
       </tbody></table></div></div>
   </section>
 
@@ -115,7 +115,7 @@
     <div class="sec-body"><div class="table-wrap"><table class="feature-table">
       <thead><tr><th>번호</th><th>기능</th><th>완료 기준</th><th>화면</th><th>상태</th></tr></thead>
       <tbody>
-        <tr><td class="mono">F4-1</td><td>키워드·조건 검색</td><td>검색어·이야기 종류·판매 상태 조건은 구현. 승인과 권리 확인을 마친 에피소드만 공개. 태그 조건은 B4</td><td>P-02</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F4-1</td><td>키워드·조건 검색</td><td>검색어(제목·요약·태그·동의어·키워드), 주제·시간·장소·감정 태그, 이야기 종류, 활용 유형, 판매 상태 조건. 승인과 권리 확인을 마친 에피소드만 공개</td><td>P-02</td><td><span class="stamp is-built">구현 B3·B4a</span></td></tr>
         <tr><td class="mono">F4-2</td><td>임베딩 색인</td><td>승인 에피소드만 색인, 변경 시 재색인</td><td>A-20</td><td><span class="stamp is-next">예정 B4</span></td></tr>
         <tr><td class="mono">F4-3</td><td>의미 검색</td><td>자연어 질의 → 유사도 + 조건, 일치 이유 표시</td><td>P-02</td><td><span class="stamp is-next">예정 B4</span></td></tr>
         <tr><td class="mono">F4-4</td><td>근거 표시</td><td>결과마다 에피소드·원고·원문 위치, 근거 없으면 "찾지 못했습니다"</td><td>P-02 · P-04</td><td><span class="stamp is-next">예정 B4</span></td></tr>
@@ -160,10 +160,10 @@
     <div class="sec-body"><div class="table-wrap"><table class="feature-table">
       <thead><tr><th>번호</th><th>기능</th><th>완료 기준</th><th>화면</th><th>상태</th></tr></thead>
       <tbody>
-        <tr><td class="mono">F9-1</td><td>감사 로그</td><td>등급·상태·결정 변경을 수정·삭제할 수 없게 기록(구현). 조회 화면은 B6</td><td>A-25</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F9-2</td><td>내보내기</td><td>승인 에피소드·메타데이터 CSV·JSON 내보내기</td><td>A-25</td><td><span class="stamp is-next">예정 B6</span></td></tr>
+        <tr><td class="mono">F9-1</td><td>감사 로그</td><td>등급·상태·결정·분류 변경을 수정·삭제할 수 없게 기록하고 관리자 화면에서 대상·기간으로 조회(회원은 번호로만 표시)</td><td>A-25 · A-02</td><td><span class="stamp is-built">구현 B1·B6a</span></td></tr>
+        <tr><td class="mono">F9-2</td><td>내보내기</td><td>공개된 에피소드·메타데이터 CSV·JSON 내보내기(사람 이름·원문 전문·파일 제외), 내보내기 기록</td><td>A-25</td><td><span class="stamp is-built">구현 B6a</span></td></tr>
         <tr><td class="mono">F9-3</td><td>KPI 측정 로그</td><td>분절·태그 F1 점수, 근거 일치율, 응답 시간(항목·목표는 U3 결정 후)</td><td>—</td><td><span class="stamp is-next">예정 B6</span></td></tr>
-        <tr><td class="mono">F9-4</td><td>이용 추적 데이터 필드</td><td>버전·승인자·권리 버전·이용 기록은 구현, 거래 단위 식별자는 B6</td><td>A-16</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F9-4</td><td>이용 추적 데이터 필드</td><td>버전·승인자·권리 버전·이용 기록·진입 키워드는 구현, 내보내기에 거래 단위 식별자와 버전·권리 버전·대표 키워드를 함께 실음. 거래 단위 화면(A-16)은 범위 밖 후보</td><td>A-16 · A-25</td><td><span class="stamp is-partial">일부</span></td></tr>
         <tr><td class="mono">F9-5</td><td>운영 안정성</td><td>상태 점검(헬스 체크)·환경 안내는 구현, 휴면 해제 절차는 B6</td><td>—</td><td><span class="stamp is-partial">일부</span></td></tr>
       </tbody></table></div></div>
   </section>
