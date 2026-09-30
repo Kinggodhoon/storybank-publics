@@ -273,7 +273,7 @@ tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, trans
   .hero { align-items: start; }
   .frame.mobile { width: 28%; }
   .rows li { grid-template-columns: minmax(0, 48px) minmax(0, 1fr); }
-  .rows li span { grid-column: 2; }
+  .rows li > span:not(.n) { grid-column: 2; }
   .topbar .tag { display: none; }
 }
 
