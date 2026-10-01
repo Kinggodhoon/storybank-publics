@@ -51,18 +51,18 @@
 
   <dl class="facts">
     <div class="fact"><dt>기능</dt><dd class="num">45개</dd></div>
-    <div class="fact"><dt>구현</dt><dd class="num">34개 <small>B1–B3·B4a·B4b·B5·B6a</small></dd></div>
-    <div class="fact"><dt>일부 구현</dt><dd class="num">5개</dd></div>
+    <div class="fact"><dt>구현</dt><dd class="num">35개 <small>B1–B3·B4a·B4b·B5·B6a·B6b</small></dd></div>
+    <div class="fact"><dt>일부 구현</dt><dd class="num">4개</dd></div>
     <div class="fact"><dt>예정</dt><dd class="num">6개 <small>B4c·B6</small></dd></div>
   </dl>
 
   <section class="sec" aria-labelledby="s0">
     <div class="sec-label"><p class="eyebrow">Overview</p><h2 id="s0">진행 현황</h2></div>
     <div class="sec-body">
-      <div class="meter" role="img" aria-label="45개 중 구현 34, 일부 5, 예정 6">
-        <i style="width:75.6%;background:var(--positive)"></i><i style="width:11.1%;background:var(--info)"></i><i style="width:13.3%;background:var(--rule-strong)"></i>
+      <div class="meter" role="img" aria-label="45개 중 구현 35, 일부 4, 예정 6">
+        <i style="width:77.8%;background:var(--positive)"></i><i style="width:8.9%;background:var(--info)"></i><i style="width:13.3%;background:var(--rule-strong)"></i>
       </div>
-      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 34</span><span><span class="stamp is-partial">일부</span> 5</span><span><span class="stamp is-next">예정</span> 6</span></div>
+      <div class="meter-legend"><span><span class="stamp is-built">구현</span> 35</span><span><span class="stamp is-partial">일부</span> 4</span><span><span class="stamp is-next">예정</span> 6</span></div>
       <p class="prose">원고 등록부터 공개 검수, 서재·정산까지 전체 흐름 동작. 권리 심화(B5), 태그·키워드와 태그 조건 탐색(B4a), 감사 로그 화면·내보내기(B6a), AI 처리 기반(B4b: 작업 큐, AI 분할·제안 검수, 나누기·합치기, 외부 AI 통제) 완료. 남은 기능은 의미 검색(B4c), 운영·증빙(B6) 단계에서 추가.</p>
     </div>
   </section>
@@ -87,7 +87,7 @@
       <thead><tr><th>번호</th><th>기능</th><th>완료 기준</th><th>화면</th><th>상태</th></tr></thead>
       <tbody>
         <tr><td class="mono">F2-1</td><td>관리자 원고 등록</td><td>DOCX·PDF·TXT, 원작 정보, 저작권자, 중복 경고(파일 해시·이름·본문 해시)</td><td>A-08</td><td><span class="stamp is-built">구현 B3</span></td></tr>
-        <tr><td class="mono">F2-2</td><td>회원 원고 등록</td><td>업로드 + 책임 고지 + 외부 AI 처리 동의, 마이페이지에서 진행 단계 확인</td><td>P-14</td><td><span class="stamp is-built">구현 B3</span></td></tr>
+        <tr><td class="mono">F2-2</td><td>회원 원고 등록</td><td>업로드 + 책임 고지 + 외부 AI 처리 동의, 마이페이지에서 진행 단계와 반려·취소 원고의 파기 예정일 확인</td><td>P-14</td><td><span class="stamp is-built">구현 B3·B6b</span></td></tr>
         <tr><td class="mono">F2-3</td><td>본문 추출·정규화</td><td>장·절·문단 구조와 문장 시작 위치는 구현. 문장 끝 위치, 머리글·바닥글 제거는 B4. HWP·OCR·STT 제외</td><td>—</td><td><span class="stamp is-partial">일부</span></td></tr>
         <tr><td class="mono">F2-4</td><td>AI 장면·에피소드 분할</td><td>원고를 빈 구간의 창(약 24,000자)씩 보내 경계 후보·제목·요약 초안·경계 근거를 받고, 승인 전 "AI 후보" 에피소드로 둔 뒤 관리자가 확정. 키 없이 도는 결정적 제공자로 전체 흐름 검증, 실제 AI(Claude) 연결은 키(N1) 뒤</td><td>A-11 · A-13</td><td><span class="stamp is-built">구현 B4b</span></td></tr>
         <tr><td class="mono">F2-5</td><td>처리 작업 큐</td><td>대기·처리 중·재시도 대기·실패·완료, 세 번까지 자동 재시도와 관리자 재실행, 처리 기록, AI 사용량·하루 예산·동시 실행 한도, "지금 실행". 크론 설정은 Vercel 플랜(N1) 뒤</td><td>A-10 · A-11</td><td><span class="stamp is-built">구현 B4b</span></td></tr>
@@ -164,7 +164,7 @@
         <tr><td class="mono">F9-2</td><td>내보내기</td><td>공개된 에피소드·메타데이터 CSV·JSON 내보내기(사람 이름·원문 전문·파일 제외), 내보내기 기록</td><td>A-25</td><td><span class="stamp is-built">구현 B6a</span></td></tr>
         <tr><td class="mono">F9-3</td><td>KPI 측정 로그</td><td>분절·태그 F1 점수, 근거 일치율, 응답 시간(항목·목표는 U3 결정 후)</td><td>—</td><td><span class="stamp is-next">예정 B6</span></td></tr>
         <tr><td class="mono">F9-4</td><td>이용 추적 데이터 필드</td><td>버전·승인자·권리 버전·이용 기록·진입 키워드는 구현, 내보내기에 거래 단위 식별자와 버전·권리 버전·대표 키워드를 함께 실음. 거래 단위 화면(A-16)은 범위 밖 후보</td><td>A-16 · A-25</td><td><span class="stamp is-partial">일부</span></td></tr>
-        <tr><td class="mono">F9-5</td><td>운영 안정성</td><td>상태 점검(헬스 체크)·환경 안내는 구현, 휴면 해제 절차는 B6</td><td>—</td><td><span class="stamp is-partial">일부</span></td></tr>
+        <tr><td class="mono">F9-5</td><td>운영 안정성</td><td>상태 점검(헬스 체크)·환경 안내, 매일 정리 작업(확정되지 않은 업로드·반려 제출 파기·보관 기간이 지난 기록·시간으로 바뀐 공개 상태)과 대시보드의 마지막 실행·지금 실행, 크론·휴면 해제 운영 안내</td><td>A-02</td><td><span class="stamp is-built">구현 B6b</span></td></tr>
       </tbody></table></div></div>
   </section>
 </main>
